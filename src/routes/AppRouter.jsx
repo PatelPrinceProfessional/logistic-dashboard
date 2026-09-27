@@ -55,6 +55,10 @@ const ETAManagement = lazy(() => import('../pages/Tracking/ETAManagement'));
 const ExceptionsDashboard = lazy(() => import('../pages/Exceptions/ExceptionsDashboard'));
 const RiskQueue = lazy(() => import('../pages/Exceptions/RiskQueue'));
 
+// ── Drivers Module ──
+const DriversList = lazy(() => import('../pages/Drivers/DriversList'));
+const DriverApp = lazy(() => import('../pages/Drivers/DriverApp'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -125,9 +129,9 @@ export default function AppRouter() {
         <Route path="/exceptions/risks"       element={<RiskQueue />} />
 
         {/* ── Drivers ── */}
-        <Route path="/drivers"                element={<ComingSoon title="Drivers" />} />
-        <Route path="/drivers/app"            element={<ComingSoon title="Driver App" />} />
-        <Route path="/drivers/:id"            element={<ComingSoon title="Driver Detail" />} />
+        <Route path="/drivers"                element={<DriversList />} />
+        <Route path="/drivers/app"            element={<DriverApp />} />
+        <Route path="/drivers/:id"            element={<DriversList />} />
 
         {/* ── Fleet ── */}
         <Route path="/fleet"                  element={<ComingSoon title="Fleet — Vehicles" />} />
