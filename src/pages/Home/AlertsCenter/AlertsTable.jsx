@@ -1,24 +1,37 @@
 import { useState } from 'react';
 import { ShieldAlert, AlertTriangle, AlertCircle, Info, ChevronRight, User } from 'lucide-react';
 
-export default function AlertsTable({ alerts, selectedAlert, onSelectAlert }) {
+export default function AlertsTable({
+  alerts,
+  selectedAlert,
+  onSelectAlert,
+  onBulkAssign,
+  onBulkResolve,
+  onBulkEscalate,
+  onExportCSV,
+}) {
   const [selectedIds, setSelectedIds] = useState([]);
 
   const toggleSelectAll = () => {
     if (selectedIds.length === alerts.length) {
       setSelectedIds([]);
     } else {
-      setSelectedIds(alerts.map(a => a.id));
+      setSelectedIds(alerts.map((a) => a.id));
     }
   };
 
   const toggleSelectRow = (id, e) => {
     e.stopPropagation();
     if (selectedIds.includes(id)) {
-      setSelectedIds(selectedIds.filter(i => i !== id));
+      setSelectedIds(selectedIds.filter((i) => i !== id));
     } else {
       setSelectedIds([...selectedIds, id]);
     }
+  };
+
+  const handleBatchAction = (actionFn) => {
+    if (actionFn) actionFn(selectedIds);
+    setSelectedIds([]);
   };
 
   const getSeverityBadge = (severity) => {
@@ -40,17 +53,36 @@ export default function AlertsTable({ alerts, selectedAlert, onSelectAlert }) {
       {selectedIds.length > 0 && (
         <div style={{
           background: '#0066CC15', borderBottom: '1px solid #0066CC30', padding: '10px 20px',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 13,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 13, flexWrap: 'wrap', gap: 8,
         }}>
           <div>
             <strong>{selectedIds.length} Alerts Selected</strong>
           </div>
-          <div style={{ display: 'flex', gap: 8 }}>
-            <button className="btn btn--secondary btn--xs" onClick={() => alert(`Assigned ${selectedIds.length} alerts to you.`)}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <button
+              className="btn btn--secondary btn--xs"
+              onClick={() => handleBatchAction(onBulkAssign)}
+            >
               Bulk Assign to Me
             </button>
-            <button className="btn btn--primary btn--xs" onClick={() => alert(`Resolved ${selectedIds.length} alerts.`)}>
+            <button
+              className="btn btn--primary btn--xs"
+              onClick={() => handleBatchAction(onBulkResolve)}
+            >
               Bulk Mark Resolved
+            </button>
+            <button
+              className="btn btn--secondary btn--xs"
+              style={{ color: '#e11d48', borderColor: '#fecdd3' }}
+              onClick={() => handleBatchAction(onBulkEscalate)}
+            >
+              Bulk Escalate
+            </button>
+            <button
+              className="btn btn--ghost btn--xs"
+              onClick={() => handleBatchAction(onExportCSV)}
+            >
+              Export CSV
             </button>
           </div>
         </div>
@@ -68,8 +100,8 @@ export default function AlertsTable({ alerts, selectedAlert, onSelectAlert }) {
                   aria-label="Select All Alerts"
                 />
               </th>
-              <th>Alert ID & Severity</th>
-              <th>Incident Type & Title</th>
+              <th>Alert ID &amp; Severity</th>
+              <th>Incident Type &amp; Title</th>
               <th>Linked Entity</th>
               <th>Assigned Owner</th>
               <th>Reported</th>
@@ -155,3 +187,4 @@ export default function AlertsTable({ alerts, selectedAlert, onSelectAlert }) {
     </div>
   );
 }
+
