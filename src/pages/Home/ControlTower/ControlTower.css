@@ -1,0 +1,392 @@
+/* ============================================================
+   LOGISTICSHUB — CONTROL TOWER CSS
+   ============================================================ */
+
+.control-tower-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── METRICS HEADER STRIP ─── */
+.ct-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.ct-metric-card {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.ct-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.ct-metric-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ct-metric-card__val {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+}
+
+.ct-metric-card__lbl {
+  font-size: 11px;
+  color: var(--color-secondary-gray);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ─── MAIN WORKSPACE GRID Layout ─── */
+.ct-workspace {
+  display: grid;
+  grid-template-columns: 270px 1fr 340px;
+  gap: var(--space-md);
+  min-height: calc(100vh - 210px);
+}
+
+/* ─── LEFT PANEL: FILTERS & LAYERS ─── */
+.ct-panel {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.ct-panel__header {
+  padding: 14px 16px;
+  background: #F8F9FA;
+  border-bottom: 1px solid var(--color-medium-gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: var(--font-weight-semibold);
+  font-size: 14px;
+}
+
+.ct-panel__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow-y: auto;
+}
+
+.ct-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ct-filter-group__title {
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-secondary-gray);
+}
+
+.ct-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+  color: var(--color-dark-gray-text);
+  user-select: none;
+}
+
+.ct-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary-blue);
+  cursor: pointer;
+}
+
+.ct-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+/* ─── CENTER PANEL: GIS MAP CANVAS ─── */
+.ct-map-container {
+  position: relative;
+  background: #191B1F; /* Dark tactical map canvas */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #2C3038;
+}
+
+.ct-map-toolbar {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.ct-map-toolbar > * {
+  pointer-events: auto;
+}
+
+.ct-map-glass-card {
+  background: rgba(25, 27, 31, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ct-map-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.ct-map-btn {
+  background: rgba(25, 27, 31, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.ct-map-btn:hover {
+  background: rgba(0, 102, 204, 0.8);
+  border-color: #0066CC;
+}
+
+/* ─── MAP CANVAS STYLING ─── */
+.ct-gis-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 102, 204, 0.08) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Vehicle Pin Pins */
+.ct-map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.2s ease, z-index 0.2s ease;
+  z-index: 5;
+}
+
+.ct-map-pin:hover {
+  transform: translate(-50%, -50%) scale(1.25);
+  z-index: 20;
+}
+
+.ct-map-pin--selected {
+  z-index: 30 !important;
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.ct-pin-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.9);
+  position: relative;
+}
+
+.ct-pin-pulse {
+  position: absolute;
+  top: -4px; right: -4px; bottom: -4px; left: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: pinPulse 2s infinite;
+  opacity: 0.6;
+}
+
+@keyframes pinPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.ct-pin-tag {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ─── VEHICLE TELEMETRY HUD ─── */
+.ct-telemetry-hud {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 15;
+  background: rgba(20, 22, 26, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  color: white;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.ct-hud__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.ct-hud__title {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ct-hud__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ct-hud__metric {
+  background: rgba(255,255,255,0.05);
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.ct-hud__lbl { font-size: 10px; color: #9EA5B1; text-transform: uppercase; letter-spacing: 0.5px; }
+.ct-hud__val { font-size: 14px; font-weight: 700; color: white; margin-top: 2px; }
+
+/* ─── RIGHT PANEL: EXCEPTIONS STACK ─── */
+.ct-exception-card {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-medium-gray);
+  background: #FFF8F8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.ct-exception-card:hover {
+  background: #FFEAEA;
+  border-color: rgba(220, 53, 69, 0.4);
+}
+
+.ct-exception-card--critical { border-left: 4px solid var(--color-error); }
+.ct-exception-card--high     { border-left: 4px solid var(--color-warning); background: #FFFDF5; }
+.ct-exception-card--medium   { border-left: 4px solid var(--color-pending); background: #FFFFF8; }
+
+.ct-exception-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.ct-exception-card__title {
+  font-size: 13px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-dark-gray-text);
+}
+
+.ct-exception-card__desc {
+  font-size: 12px;
+  color: var(--color-secondary-gray);
+  line-height: 1.35;
+}
+
+.ct-exception-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--color-secondary-gray);
+}
+
+/* ─── RESPONSIVE BREAKPOINTS ─── */
+@media (max-width: 1300px) {
+  .ct-workspace { grid-template-columns: 240px 1fr 300px; }
+  .ct-metrics-bar { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 992px) {
+  .ct-workspace { grid-template-columns: 1fr; }
+  .ct-metrics-bar { grid-template-columns: repeat(2, 1fr); }
+}
