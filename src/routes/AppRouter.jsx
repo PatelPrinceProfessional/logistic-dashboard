@@ -37,6 +37,11 @@ const ConsolidationManagement = lazy(() => import('../pages/LoadBuilding/Consoli
 const RouteBuilder = lazy(() => import('../pages/Routing/RouteBuilder'));
 const RouteOptimization = lazy(() => import('../pages/Routing/RouteOptimization'));
 
+// ── Procurement Module ──
+const TenderBoard = lazy(() => import('../pages/Procurement/TenderBoard'));
+const CreateRFQ = lazy(() => import('../pages/Procurement/CreateRFQ'));
+
+
 
 
 // ── Coming Soon placeholder ──
@@ -91,8 +96,8 @@ export default function AppRouter() {
         <Route path="/routing/optimization"   element={<RouteOptimization />} />
 
         {/* ── Procurement ── */}
-        <Route path="/procurement"            element={<ComingSoon title="Tender Board" />} />
-        <Route path="/procurement/rfq"        element={<ComingSoon title="Create RFQ" />} />
+        <Route path="/procurement"            element={<TenderBoard />} />
+        <Route path="/procurement/rfq"        element={<CreateRFQ />} />
 
         {/* ── Dispatch ── */}
         <Route path="/dispatch"               element={<ComingSoon title="Dispatch Board" />} />

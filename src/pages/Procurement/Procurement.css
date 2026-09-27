@@ -1,0 +1,513 @@
+/* ==========================================================================
+   PROCUREMENT & TENDER MANAGEMENT MODULE — PRISTINE ENTERPRISE STYLING
+   High-contrast, clean slate borders, responsive 6-stage Kanban board.
+   ========================================================================== */
+
+:root {
+  --proc-bg: #f8fafc;
+  --proc-card: #ffffff;
+  --proc-border: #e2e8f0;
+  --proc-text-dark: #0f172a;
+  --proc-text-muted: #64748b;
+  --proc-primary: #2563eb;
+  --proc-primary-light: #eff6ff;
+  --proc-success: #10b981;
+  --proc-success-light: #ecfdf5;
+  --proc-warning: #f59e0b;
+  --proc-warning-light: #fffbeb;
+  --proc-danger: #ef4444;
+  --proc-danger-light: #fef2f2;
+  --proc-purple: #7c3aed;
+  --proc-purple-light: #f5f3ff;
+  --proc-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --proc-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --proc-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+}
+
+.procurement-container {
+  padding: 24px;
+  max-width: 1720px;
+  margin: 0 auto;
+  min-height: calc(100vh - 72px);
+  background-color: var(--proc-bg);
+  color: var(--proc-text-dark);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Page Header */
+.procurement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--proc-border);
+}
+
+.proc-title-group h1 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.proc-title-group p {
+  font-size: 0.875rem;
+  color: var(--proc-text-muted);
+  margin: 0;
+}
+
+.proc-header-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.proc-view-toggle {
+  display: flex;
+  background: #f1f5f9;
+  border: 1px solid var(--proc-border);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.proc-toggle-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  transition: all 0.15s;
+}
+
+.proc-toggle-btn.active {
+  background: #ffffff;
+  color: var(--proc-primary);
+  box-shadow: var(--proc-shadow-sm);
+}
+
+/* Filters Bar */
+.proc-filters-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--proc-border);
+  padding: 10px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: var(--proc-shadow-sm);
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.proc-filter-inputs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.proc-search-input {
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--proc-border);
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-size: 0.85rem;
+  width: 260px;
+  outline: none;
+}
+
+.proc-search-input:focus {
+  border-color: var(--proc-primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.proc-select {
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--proc-border);
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-size: 0.825rem;
+  outline: none;
+}
+
+/* 6-Column Kanban Pipeline Board */
+.kanban-board-container {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(260px, 1fr));
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1600px) {
+  .kanban-board-container {
+    grid-template-columns: repeat(6, 280px);
+  }
+}
+
+.kanban-column {
+  background: #f1f5f9;
+  border: 1px solid var(--proc-border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+}
+
+.kanban-col-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid transparent;
+}
+
+.kanban-col-header.draft { border-bottom-color: #64748b; }
+.kanban-col-header.sent { border-bottom-color: #2563eb; }
+.kanban-col-header.responses { border-bottom-color: #f59e0b; }
+.kanban-col-header.evaluated { border-bottom-color: #7c3aed; }
+.kanban-col-header.awarded { border-bottom-color: #10b981; }
+.kanban-col-header.rejected { border-bottom-color: #ef4444; }
+
+.kanban-col-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kanban-col-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  border: 1px solid var(--proc-border);
+  color: #334155;
+}
+
+.kanban-cards-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Kanban Tender Card */
+.tender-card {
+  background: #ffffff;
+  border: 1px solid var(--proc-border);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: var(--proc-shadow-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.tender-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--proc-shadow-md);
+  border-color: #cbd5e1;
+}
+
+.tender-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.tender-id {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--proc-primary);
+}
+
+.tender-service-pill {
+  font-size: 0.675rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.pill-express {
+  background-color: var(--proc-primary-light);
+  color: var(--proc-primary);
+}
+
+.pill-standard {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.tender-lane {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.tender-meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.725rem;
+  color: var(--proc-text-muted);
+  margin-bottom: 8px;
+}
+
+/* Sent Column Carrier Avatars */
+.carrier-avatar-stack {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.carrier-avatar-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  margin-left: -6px;
+}
+
+.carrier-avatar-circle:first-child {
+  margin-left: 0;
+}
+
+/* Deadline Timer Badge */
+.deadline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.deadline-badge.urgent {
+  background-color: var(--proc-danger-light);
+  color: var(--proc-danger);
+}
+
+.deadline-badge.normal {
+  background-color: var(--proc-warning-light);
+  color: #b45309;
+}
+
+/* Price & Scoring Highlighting */
+.best-price-highlight {
+  background-color: #ecfdf5;
+  border: 1px dashed #10b981;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.75rem;
+  color: #065f46;
+  margin-bottom: 8px;
+}
+
+.recommended-winner-badge {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border: 1px solid #c4b5fd;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+}
+
+.winner-name {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #5b21b6;
+}
+
+.winner-score {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #7c3aed;
+}
+
+.tender-actions-bar {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.tender-action-btn {
+  flex: 1;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 0.725rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.btn-evaluate {
+  background-color: var(--proc-primary);
+  color: #ffffff;
+}
+
+.btn-evaluate:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-award {
+  background-color: var(--proc-success);
+  color: #ffffff;
+}
+
+.btn-award:hover {
+  background-color: #059669;
+}
+
+.btn-retender {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+.btn-retender:hover {
+  background-color: #fee2e2;
+}
+
+/* ==========================================================================
+   EVALUATION & BID COMPARISON MODAL
+   ========================================================================== */
+
+.proc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.proc-modal-dialog {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--proc-border);
+  box-shadow: var(--proc-shadow-lg);
+  width: 780px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--proc-border);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cargo-spec-summary {
+  background: #f8fafc;
+  border: 1px solid var(--proc-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.spec-item strong {
+  display: block;
+  color: #0f172a;
+}
+
+.spec-item span {
+  color: var(--proc-text-muted);
+  font-size: 0.725rem;
+}
+
+/* Bids Evaluation Table */
+.bids-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.bids-table th {
+  background-color: #f8fafc;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--proc-text-muted);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--proc-border);
+}
+
+.bids-table td {
+  padding: 12px;
+  font-size: 0.825rem;
+  border-bottom: 1px solid var(--proc-border);
+  color: #0f172a;
+}
+
+.bids-table tr.is-winner {
+  background-color: #f5f3ff;
+}
+
+.mcda-score-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.775rem;
+}
+
+.score-high {
+  background-color: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.score-med {
+  background-color: #f5f3ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
+}
