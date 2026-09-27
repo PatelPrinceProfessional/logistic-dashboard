@@ -1,0 +1,104 @@
+/* ============================================================
+   LOGISTICSHUB — CSS RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-dark-gray-text);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography reset */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-dark-gray-text);
+  margin: 0;
+}
+
+h1 { font-size: var(--font-size-h1); font-weight: var(--font-weight-bold); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+
+p { margin: 0; line-height: var(--line-height-normal); }
+
+a {
+  color: var(--color-primary-blue);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+a:hover { color: var(--color-hover-blue); text-decoration: underline; }
+
+/* List reset */
+ul, ol { list-style: none; margin: 0; padding: 0; }
+
+/* Image reset */
+img, svg { display: block; max-width: 100%; }
+
+/* Button reset */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Input reset */
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+  accent-color: var(--color-primary-blue);
+}
+
+/* Table reset */
+table { border-collapse: collapse; width: 100%; }
+
+/* Focus visible — accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary-blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-light-blue);
+  color: var(--color-primary-blue);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-light-gray); border-radius: var(--radius-pill); }
+::-webkit-scrollbar-thumb { background: var(--color-medium-gray); border-radius: var(--radius-pill); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-secondary-gray); }

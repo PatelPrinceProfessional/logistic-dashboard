@@ -1,0 +1,127 @@
+/* ============================================================
+   LOGISTICSHUB — CSS VARIABLES (DESIGN TOKENS)
+   Source: COMPLETE_UI_DESIGN_PROMPT.md — SECTION 0
+   ============================================================ */
+
+:root {
+  /* ─── PRIMARY COLORS ─── */
+  --color-white:          #FFFFFF;
+  --color-off-white:      #F8F9FA;
+  --color-light-gray:     #F1F3F5;
+  --color-medium-gray:    #E9ECEF;
+  --color-dark-gray-text: #2C3E50;
+  --color-secondary-gray: #6C757D;
+
+  /* ─── ACCENT COLORS ─── */
+  --color-primary-blue:   #0066CC;
+  --color-hover-blue:     #0052A3;
+  --color-active-blue:    #003D7A;
+  --color-light-blue:     #E7F0FF;
+  --color-success:        #28A745;
+  --color-success-hover:  #218838;
+  --color-warning:        #FF9800;
+  --color-warning-hover:  #E68900;
+  --color-error:          #DC3545;
+  --color-error-hover:    #C82333;
+  --color-info:           #17A2B8;
+  --color-info-hover:     #138496;
+
+  /* ─── SEMANTIC / STATUS COLORS ─── */
+  --color-on-time:        #27AE60;
+  --color-at-risk:        #E67E22;
+  --color-delayed:        #E74C3C;
+  --color-pending:        #F39C12;
+  --color-completed:      #3498DB;
+  --color-draft:          #6C757D;
+  --color-cancelled:      #E74C3C;
+
+  /* ─── SEMANTIC BG TINTS ─── */
+  --color-success-bg:     #F0FFF4;
+  --color-warning-bg:     #FFFBF0;
+  --color-error-bg:       #FFF5F5;
+  --color-info-bg:        #F0FAFF;
+
+  /* ─── SPACING (8px grid) ─── */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   32px;
+  --space-xxl:  48px;
+  --space-xxxl: 64px;
+
+  /* ─── TYPOGRAPHY ─── */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --font-size-h1:      28px;
+  --font-size-h2:      24px;
+  --font-size-h3:      20px;
+  --font-size-h4:      16px;
+  --font-size-body-lg: 16px;
+  --font-size-body:    14px;
+  --font-size-small:   12px;
+  --font-size-caption: 11px;
+
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight:   1.2;
+  --line-height-snug:    1.4;
+  --line-height-normal:  1.6;
+  --line-height-relaxed: 1.8;
+
+  /* ─── BORDER RADIUS ─── */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ─── BORDERS ─── */
+  --border-color:  #E9ECEF;
+  --border-width:  1px;
+  --border-style:  solid;
+  --border:        1px solid #E9ECEF;
+
+  /* ─── SHADOWS ─── */
+  --shadow-xs:      0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-subtle:  0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-light:   0 2px 4px rgba(0, 0, 0, 0.10);
+  --shadow-medium:  0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-hover:   0 8px 16px rgba(0, 0, 0, 0.14);
+  --shadow-card:    0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-modal:   0 20px 60px rgba(0, 0, 0, 0.18);
+  --shadow-dropdown:0 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* ─── LAYOUT CONSTANTS ─── */
+  --sidebar-width:            280px;
+  --sidebar-collapsed-width:  64px;
+  --navbar-height:            60px;
+  --content-max-width:        1400px;
+
+  /* ─── COMPONENT SIZES ─── */
+  --input-height:    40px;
+  --button-height:   40px;
+  --button-height-sm:36px;
+  --button-height-xs:32px;
+  --icon-size:       20px;
+  --icon-size-lg:    24px;
+  --avatar-size:     32px;
+
+  /* ─── TRANSITIONS ─── */
+  --transition-fast:   all 0.15s ease;
+  --transition-normal: all 0.20s ease;
+  --transition-slow:   all 0.30s ease;
+
+  /* ─── Z-INDEX SCALE ─── */
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  500;
+  --z-modal:    1000;
+  --z-toast:    9999;
+}

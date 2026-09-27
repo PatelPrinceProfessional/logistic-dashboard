@@ -1,0 +1,69 @@
+/* ============================================================
+   LOGISTICSHUB — RESPONSIVE CSS
+   Breakpoints: Mobile < 640px | Tablet 641-1024px | Desktop > 1024px
+   ============================================================ */
+
+/* ─── TABLET ─── */
+@media (max-width: 1024px) {
+  .sidebar { width: var(--sidebar-collapsed-width); }
+  .sidebar .sidebar-item__text   { opacity: 0; width: 0; }
+  .sidebar .sidebar-item__chevron { opacity: 0; }
+  .sidebar .sidebar__label       { opacity: 0; }
+  .sidebar .sidebar__section-label { opacity: 0; }
+  .sidebar .sidebar-item__submenu { max-height: 0 !important; }
+  .main-content { margin-left: var(--sidebar-collapsed-width); }
+
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .form-row--4 { grid-template-columns: repeat(2, 1fr); }
+  .form-row--3 { grid-template-columns: repeat(2, 1fr); }
+
+  .navbar__search { max-width: 280px; }
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 640px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .sidebar {
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: var(--z-modal);
+  }
+
+  .sidebar--mobile-open { transform: translateX(0); }
+
+  .main-content { margin-left: 0; }
+
+  .navbar__search { display: none; }
+
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .form-row, .form-row--3, .form-row--4 { grid-template-columns: 1fr; }
+
+  .page-header__top { flex-direction: column; align-items: flex-start; }
+  .page-header__actions { width: 100%; justify-content: flex-end; }
+
+  .pagination { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
+
+  .drawer { width: 100%; }
+  .drawer--wide { width: 100%; }
+
+  .modal { max-width: 100%; border-radius: var(--radius-lg) var(--radius-lg) 0 0; margin-top: auto; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+
+  .table th, .table td { padding: 0 var(--space-sm); }
+
+  .page-content { padding: var(--space-md); }
+  .page-header  { padding: var(--space-md) var(--space-md) 0; }
+  .filter-bar   { padding: var(--space-sm) var(--space-md); }
+}
+
+/* ─── PRINT ─── */
+@media print {
+  .navbar, .sidebar, .drawer, .toast-container { display: none !important; }
+  .main-content { margin-left: 0 !important; }
+  .page-content { padding: 0; }
+  * { box-shadow: none !important; }
+}
