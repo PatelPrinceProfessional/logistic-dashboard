@@ -41,6 +41,12 @@ const RouteOptimization = lazy(() => import('../pages/Routing/RouteOptimization'
 const TenderBoard = lazy(() => import('../pages/Procurement/TenderBoard'));
 const CreateRFQ = lazy(() => import('../pages/Procurement/CreateRFQ'));
 
+// ── Dispatch Module ──
+const DispatchBoard = lazy(() => import('../pages/Dispatch/DispatchBoard'));
+const TripManagement = lazy(() => import('../pages/Dispatch/TripManagement'));
+const TripDetail = lazy(() => import('../pages/Dispatch/TripDetail'));
+
+
 
 
 
@@ -100,9 +106,9 @@ export default function AppRouter() {
         <Route path="/procurement/rfq"        element={<CreateRFQ />} />
 
         {/* ── Dispatch ── */}
-        <Route path="/dispatch"               element={<ComingSoon title="Dispatch Board" />} />
-        <Route path="/dispatch/trips"         element={<ComingSoon title="Trip Management" />} />
-        <Route path="/dispatch/trips/:id"     element={<ComingSoon title="Trip Detail" />} />
+        <Route path="/dispatch"               element={<DispatchBoard />} />
+        <Route path="/dispatch/trips"         element={<TripManagement />} />
+        <Route path="/dispatch/trips/:id"     element={<TripDetail />} />
 
         {/* ── Live Tracking ── */}
         <Route path="/tracking"               element={<ComingSoon title="Live Map" />} />
