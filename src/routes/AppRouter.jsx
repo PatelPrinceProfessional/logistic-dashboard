@@ -33,6 +33,11 @@ const ContinuousReplanning = lazy(() => import('../pages/Planning/ContinuousRepl
 const LoadBuilder = lazy(() => import('../pages/LoadBuilding/LoadBuilder'));
 const ConsolidationManagement = lazy(() => import('../pages/LoadBuilding/ConsolidationManagement'));
 
+// ── Routing Module ──
+const RouteBuilder = lazy(() => import('../pages/Routing/RouteBuilder'));
+const RouteOptimization = lazy(() => import('../pages/Routing/RouteOptimization'));
+
+
 
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
@@ -82,8 +87,8 @@ export default function AppRouter() {
         <Route path="/load-building/consolidation" element={<ConsolidationManagement />} />
 
         {/* ── Routing ── */}
-        <Route path="/routing"                element={<ComingSoon title="Route Builder" />} />
-        <Route path="/routing/optimization"   element={<ComingSoon title="Route Optimization" />} />
+        <Route path="/routing"                element={<RouteBuilder />} />
+        <Route path="/routing/optimization"   element={<RouteOptimization />} />
 
         {/* ── Procurement ── */}
         <Route path="/procurement"            element={<ComingSoon title="Tender Board" />} />
