@@ -1,0 +1,346 @@
+/* ============================================================
+   LOGISTICSHUB — OPERATIONS DASHBOARD CSS
+   ============================================================ */
+
+/* ─── GAUGE CARD ─── */
+.gauge-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gauge-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--space-sm) 0;
+}
+
+.gauge-svg {
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.gauge-track {
+  fill: none;
+  stroke: var(--color-medium-gray);
+  stroke-linecap: round;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease;
+}
+
+.gauge-label {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.gauge-label__value {
+  font-size: 26px;
+  font-weight: var(--font-weight-bold);
+}
+
+.gauge-label__unit {
+  font-size: 12px;
+  color: var(--color-secondary-gray);
+  margin-top: 2px;
+}
+
+/* ─── KPI EXCEPTION CARD ─── */
+.kpi-exception-card {
+  background: linear-gradient(135deg, #FFF5F5 0%, #FFE8E8 100%);
+  border-color: rgba(220, 53, 69, 0.2);
+}
+
+.kpi-exception-card .kpi-card__value { color: var(--color-error); }
+
+/* ─── TRIP STATUS PANEL ─── */
+.trip-status-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.trip-status-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.trip-status-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-body);
+}
+
+.trip-status-item__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-dark-gray-text);
+}
+
+.trip-status-item__count {
+  font-weight: var(--font-weight-bold);
+}
+
+.trip-status-item__pct {
+  font-size: var(--font-size-small);
+  color: var(--color-secondary-gray);
+}
+
+/* ─── DOCK UTILIZATION ─── */
+.dock-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.dock-bar-item:hover { background: var(--color-off-white); }
+
+.dock-bar-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-small);
+}
+
+.dock-bar-item__name { font-weight: var(--font-weight-semibold); color: var(--color-dark-gray-text); }
+
+.dock-bar-item__pct {
+  font-weight: var(--font-weight-bold);
+  font-size: 13px;
+}
+
+.dock-bar-item__sub {
+  font-size: var(--font-size-caption);
+  color: var(--color-secondary-gray);
+}
+
+.dock-bar-track {
+  height: 10px;
+  background: var(--color-medium-gray);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.dock-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 0.8s ease;
+}
+
+/* ─── URGENT ACTIONS ─── */
+.urgent-panel {
+  background: linear-gradient(135deg, #FFF8F8 0%, #FFF2F2 100%);
+  border: 1px solid rgba(220, 53, 69, 0.15);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.urgent-panel__header {
+  background: linear-gradient(135deg, #FFECEC 0%, #FFE0E0 100%);
+  border-bottom: 1px solid rgba(220, 53, 69, 0.15);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.urgent-panel__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-error);
+}
+
+.urgent-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid rgba(220, 53, 69, 0.08);
+  transition: var(--transition-fast);
+}
+
+.urgent-item:last-child { border-bottom: none; }
+.urgent-item:hover { background: rgba(220, 53, 69, 0.04); }
+
+.urgent-item__count {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+  color: white;
+}
+
+.urgent-item__count--critical { background: var(--color-error); }
+.urgent-item__count--high     { background: var(--color-warning); }
+.urgent-item__count--medium   { background: var(--color-pending); }
+
+.urgent-item__body { flex: 1 }
+
+.urgent-item__title {
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-dark-gray-text);
+}
+
+.urgent-item__desc {
+  font-size: var(--font-size-caption);
+  color: var(--color-secondary-gray);
+  margin-top: 2px;
+}
+
+/* ─── NEXT 24H TIMELINE ─── */
+.timeline-24h { display: flex; flex-direction: column; overflow: hidden; }
+
+.timeline-24h__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: 10px var(--space-lg);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border-left: 3px solid transparent;
+}
+
+.timeline-24h__item:hover { background: var(--color-off-white); }
+
+.timeline-24h__item--at-risk  { border-left-color: var(--color-warning); }
+.timeline-24h__item--delayed  { border-left-color: var(--color-error); }
+.timeline-24h__item--on-time  { border-left-color: var(--color-success); }
+
+.timeline-24h__time {
+  min-width: 44px;
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary-gray);
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.timeline-24h__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-circle);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.timeline-24h__content { flex: 1; min-width: 0; }
+
+.timeline-24h__event {
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-dark-gray-text);
+  truncate: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeline-24h__location {
+  font-size: var(--font-size-caption);
+  color: var(--color-secondary-gray);
+  margin-top: 1px;
+}
+
+.timeline-24h__type {
+  flex-shrink: 0;
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ─── EVENT TYPE COLORS ─── */
+.type-loading     { background: #EBF5FF; color: #0066CC; }
+.type-dispatch    { background: #E8F5FF; color: #17A2B8; }
+.type-pickup      { background: #F0FFF4; color: #27AE60; }
+.type-delivery    { background: #FFF9E6; color: #E67E22; }
+.type-appointment { background: #F5F0FF; color: #6C3483; }
+.type-maintenance { background: #FFF5F0; color: #CC5500; }
+.type-internal    { background: #F5F5F5; color: #6C757D; }
+
+/* ─── PROGRESS MINI ─── */
+.progress-mini {
+  height: 4px;
+  background: var(--color-medium-gray);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  width: 64px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.progress-mini__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 0.6s ease;
+}
+
+/* ─── PRIORITY ICON ─── */
+.priority-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+}
+
+.priority-urgent  { background: #FFE0E0; color: var(--color-error); }
+.priority-high    { background: #FFEED5; color: var(--color-warning); }
+.priority-medium  { background: #FFF9E6; color: var(--color-pending); }
+.priority-low     { background: var(--color-light-gray); color: var(--color-secondary-gray); }
+
+/* ─── OPS GRID LAYOUT ─── */
+.ops-section { margin-bottom: var(--space-lg); }
+
+.ops-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.ops-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+@media (max-width: 1200px) {
+  .ops-grid-3 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .ops-grid-3, .ops-grid-2 { grid-template-columns: 1fr; }
+}

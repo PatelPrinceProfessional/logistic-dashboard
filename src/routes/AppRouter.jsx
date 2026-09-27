@@ -10,6 +10,7 @@ const PageLoader = () => (
 
 // ── Lazy-load pages ──
 const ExecutiveDashboard = lazy(() => import('../pages/Home/ExecutiveDashboard/ExecutiveDashboard'));
+const OperationsDashboard = lazy(() => import('../pages/Home/OperationsDashboard/OperationsDashboard'));
 
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
@@ -34,7 +35,7 @@ export default function AppRouter() {
       <Routes>
         {/* ── Home / Dashboards ── */}
         <Route path="/"                       element={<ExecutiveDashboard />} />
-        <Route path="/ops-dashboard"          element={<ComingSoon title="Operations Dashboard" />} />
+        <Route path="/ops-dashboard"          element={<OperationsDashboard />} />
         <Route path="/control-tower"          element={<ComingSoon title="Control Tower" />} />
         <Route path="/alerts-center"          element={<ComingSoon title="Alerts Center" />} />
         <Route path="/saved-views"            element={<ComingSoon title="Saved Views" />} />
