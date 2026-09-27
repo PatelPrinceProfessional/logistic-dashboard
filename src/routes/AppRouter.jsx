@@ -29,6 +29,11 @@ const ShipmentDetail = lazy(() => import('../pages/Shipments/ShipmentDetail'));
 const PlanningWorkbench = lazy(() => import('../pages/Planning/PlanningWorkbench'));
 const ContinuousReplanning = lazy(() => import('../pages/Planning/ContinuousReplanning'));
 
+// ── Load Building Module ──
+const LoadBuilder = lazy(() => import('../pages/LoadBuilding/LoadBuilder'));
+const ConsolidationManagement = lazy(() => import('../pages/LoadBuilding/ConsolidationManagement'));
+
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -73,8 +78,8 @@ export default function AppRouter() {
         <Route path="/planning/replanning"    element={<ContinuousReplanning />} />
 
         {/* ── Load Building ── */}
-        <Route path="/load-building"          element={<ComingSoon title="Load Builder" />} />
-        <Route path="/load-building/consolidation" element={<ComingSoon title="Consolidation Management" />} />
+        <Route path="/load-building"          element={<LoadBuilder />} />
+        <Route path="/load-building/consolidation" element={<ConsolidationManagement />} />
 
         {/* ── Routing ── */}
         <Route path="/routing"                element={<ComingSoon title="Route Builder" />} />
