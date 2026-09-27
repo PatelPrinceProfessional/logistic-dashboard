@@ -15,6 +15,11 @@ const ControlTower = lazy(() => import('../pages/Home/ControlTower/ControlTower'
 const AlertsCenter = lazy(() => import('../pages/Home/AlertsCenter/AlertsCenter'));
 const SavedViews = lazy(() => import('../pages/Home/SavedViews/SavedViews'));
 
+// ── Orders Module ──
+const OrdersList = lazy(() => import('../pages/Orders/OrdersList'));
+const OrderValidation = lazy(() => import('../pages/Orders/OrderValidation'));
+const OrderDetail = lazy(() => import('../pages/Orders/OrderDetail'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -44,10 +49,10 @@ export default function AppRouter() {
         <Route path="/saved-views"            element={<SavedViews />} />
 
         {/* ── Orders ── */}
-        <Route path="/orders"                 element={<ComingSoon title="Orders Management" />} />
-        <Route path="/orders/create"          element={<ComingSoon title="Create Order" />} />
-        <Route path="/orders/validation"      element={<ComingSoon title="Order Validation" />} />
-        <Route path="/orders/:id"             element={<ComingSoon title="Order Detail" />} />
+        <Route path="/orders"                 element={<OrdersList />} />
+        <Route path="/orders/create"          element={<OrdersList />} />
+        <Route path="/orders/validation"      element={<OrderValidation />} />
+        <Route path="/orders/:id"             element={<OrderDetail />} />
 
         {/* ── Shipments ── */}
         <Route path="/shipments"              element={<ComingSoon title="Shipments" />} />
