@@ -315,3 +315,614 @@
   background: #f8fafc;
   border: 1px solid var(--trk-border);
 }
+
+/* ==========================================================================
+   SHIPMENT TRACKING — 5-TAB SUITE STYLES
+   ========================================================================== */
+
+.shp-top-banner {
+  background: #ffffff;
+  border: 1px solid var(--trk-border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--trk-shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.shp-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.shp-id-badge {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--trk-primary);
+  letter-spacing: -0.02em;
+}
+
+.shp-select-dropdown {
+  padding: 6px 12px;
+  border: 1px solid var(--trk-border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #f8fafc;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.shp-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--trk-text-muted);
+}
+
+.shp-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Shipment Sub-Tabs Bar */
+.shp-tabs-bar {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--trk-border);
+  margin-bottom: 16px;
+  padding-bottom: 2px;
+  overflow-x: auto;
+}
+
+.shp-tab-btn {
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: var(--trk-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+}
+
+.shp-tab-btn:hover {
+  color: var(--trk-primary);
+}
+
+.shp-tab-btn.active {
+  color: var(--trk-primary);
+  border-bottom: 2px solid var(--trk-primary);
+  background: rgba(37, 99, 235, 0.04);
+  border-radius: 6px 6px 0 0;
+}
+
+.shp-badge-count {
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.badge-count-orange {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.badge-count-blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* Milestone Timeline Styling */
+.milestone-stepper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 20px;
+}
+
+.milestone-stepper::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  bottom: 24px;
+  left: 33px;
+  width: 2px;
+  background: #e2e8f0;
+  z-index: 1;
+}
+
+.milestone-step-item {
+  display: flex;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+
+.milestone-node-indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px #ffffff;
+}
+
+.milestone-node-completed {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.milestone-node-current {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  animation: pulse-node 2s infinite;
+}
+
+@keyframes pulse-node {
+  0% { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.1); }
+  100% { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3); }
+}
+
+.milestone-node-pending {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.milestone-body {
+  background: #ffffff;
+  border: 1px solid var(--trk-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  flex: 1;
+  box-shadow: var(--trk-shadow-sm);
+  transition: border-color 0.15s;
+}
+
+.milestone-step-item.is-current .milestone-body {
+  border-color: #93c5fd;
+  background: #f8faff;
+}
+
+.milestone-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.milestone-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.milestone-time {
+  font-size: 0.775rem;
+  color: var(--trk-text-muted);
+  font-weight: 600;
+}
+
+.milestone-meta-row {
+  font-size: 0.775rem;
+  color: var(--trk-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.milestone-details-box {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-size: 0.775rem;
+  color: #334155;
+  border-left: 3px solid var(--trk-primary);
+}
+
+/* Telematics Live Location Card */
+.live-telematics-kpi-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: var(--trk-shadow-sm);
+}
+
+.telematics-gauges-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.telematics-gauge-box {
+  background: #ffffff;
+  border: 1px solid var(--trk-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.telematics-gauge-label {
+  font-size: 0.7rem;
+  color: var(--trk-text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.telematics-gauge-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 2px;
+}
+
+/* Document Cards Grid */
+.doc-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.doc-tile-card {
+  background: #ffffff;
+  border: 1px solid var(--trk-border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--trk-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.doc-tile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--trk-shadow-md);
+  border-color: #93c5fd;
+}
+
+.doc-tile-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.doc-icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.doc-tile-info h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.doc-tile-info p {
+  font-size: 0.75rem;
+  color: var(--trk-text-muted);
+  margin: 0;
+}
+
+.doc-tile-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* ePOD Signature Card */
+.epod-preview-box {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.signature-canvas-sim {
+  height: 70px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Brush Script MT', cursive, sans-serif;
+  font-size: 1.5rem;
+  color: #1e3a8a;
+  letter-spacing: 2px;
+}
+
+/* Exception Cards */
+.exception-alert-card {
+  border: 1px solid #fecaca;
+  background: #fff5f5;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.exception-alert-card.resolved {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.exception-header-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Telematics Stream Table */
+.telematics-feed-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.telematics-feed-table th {
+  background: #f8fafc;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--trk-text-muted);
+  border-bottom: 1px solid var(--trk-border);
+}
+
+.telematics-feed-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--trk-border);
+  color: #0f172a;
+}
+
+.telematics-feed-table tr:hover td {
+  background: #f8faff;
+}
+
+/* Modal overlays */
+.trk-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.trk-modal-box {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 580px;
+  padding: 24px;
+  box-shadow: var(--trk-shadow-lg);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   ETA MANAGEMENT & PREDICTIVE ANALYTICS STYLES
+   ========================================================================== */
+
+.eta-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.eta-metric-card {
+  background: #ffffff;
+  border: 1px solid var(--trk-border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--trk-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.eta-metric-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--trk-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.eta-metric-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 6px 0 2px 0;
+}
+
+.eta-metric-subtext {
+  font-size: 0.725rem;
+  color: var(--trk-text-muted);
+}
+
+/* ETA Active Fleet Table Layout */
+.eta-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1300px) {
+  .eta-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eta-fleet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.eta-fleet-table th {
+  background: #f8fafc;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--trk-text-muted);
+  border-bottom: 1px solid var(--trk-border);
+  white-space: nowrap;
+}
+
+.eta-fleet-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--trk-border);
+  color: #0f172a;
+  vertical-align: middle;
+}
+
+.eta-fleet-row {
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.eta-fleet-row:hover td {
+  background-color: #f8faff;
+}
+
+.eta-fleet-row.selected td {
+  background-color: #eff6ff;
+  border-bottom-color: #bfdbfe;
+}
+
+/* Probability Bar */
+.eta-prob-track {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.eta-prob-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ETA Factors & What-If Cards */
+.eta-factors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.eta-factor-box {
+  background: #f8fafc;
+  border: 1px solid var(--trk-border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.eta-factor-label {
+  font-size: 0.7rem;
+  color: var(--trk-text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.eta-factor-val {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2px;
+}
+
+.whatif-scenarios-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.whatif-tile {
+  background: #ffffff;
+  border: 1px solid var(--trk-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.15s;
+}
+
+.whatif-tile:hover {
+  border-color: #93c5fd;
+  background: #f8faff;
+  transform: translateX(2px);
+}
+
+.whatif-tile.active-sim {
+  border-color: var(--trk-primary);
+  background: #eff6ff;
+  box-shadow: 0 0 0 1px var(--trk-primary);
+}
+
+.whatif-title {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.whatif-impact-badge {
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+
