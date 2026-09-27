@@ -1,4 +1,4 @@
-import { useNavigate } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Play, Star, Share2, MoreVertical, Sun, Briefcase, Moon, Award, Thermometer, Anchor, User } from 'lucide-react';
 
 export default function SavedViewCard({ view, onFavoriteToggle, onDeleteView }) {
