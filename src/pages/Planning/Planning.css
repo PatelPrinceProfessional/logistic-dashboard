@@ -1,0 +1,169 @@
+/* ============================================================
+   LOGISTICSHUB — TRANSPORTATION PLANNING CSS
+   ============================================================ */
+
+.planning-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── TOP METRICS STRIP ─── */
+.tp-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+}
+
+.tp-metric-card {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.tp-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.tp-metric-card__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tp-metric-card__val {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+}
+
+.tp-metric-card__lbl {
+  font-size: 11px;
+  color: var(--color-secondary-gray);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ─── 3-COLUMN WORKSPACE GRID ─── */
+.tp-workspace {
+  display: grid;
+  grid-template-columns: 320px 1fr 340px;
+  gap: var(--space-md);
+  min-height: calc(100vh - 210px);
+}
+
+/* Panel Containers */
+.tp-panel {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.tp-panel__header {
+  padding: 14px 16px;
+  background: #F8F9FA;
+  border-bottom: 1px solid var(--color-medium-gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: var(--font-weight-semibold);
+  font-size: 14px;
+}
+
+.tp-panel__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+/* Demand Queue Item Card */
+.tp-demand-item {
+  padding: 12px;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  background: #F8F9FA;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.tp-demand-item:hover {
+  background: white;
+  border-color: var(--color-primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.tp-demand-item--selected {
+  background: #EBF5FF;
+  border-color: var(--color-primary-blue);
+}
+
+/* Carrier Capacity Fill Bar Card */
+.tp-capacity-card {
+  padding: 14px;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tp-fill-track {
+  height: 10px;
+  background: var(--color-medium-gray);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.tp-fill-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Ranking Carrier Item */
+.tp-carrier-rank-item {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--color-medium-gray);
+  background: #F8F9FA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tp-carrier-rank-item:hover {
+  background: #EBF5FF;
+  border-color: var(--color-primary-blue);
+}
+
+@media (max-width: 1300px) {
+  .tp-workspace { grid-template-columns: 280px 1fr 300px; }
+  .tp-metrics-strip { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 992px) {
+  .tp-workspace { grid-template-columns: 1fr; }
+  .tp-metrics-strip { grid-template-columns: 1fr; }
+}
