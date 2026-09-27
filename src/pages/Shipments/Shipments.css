@@ -1,0 +1,160 @@
+/* ============================================================
+   LOGISTICSHUB — SHIPMENTS MANAGEMENT CSS
+   ============================================================ */
+
+.shipments-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── METRIC STRIP ─── */
+.sm-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+}
+
+.sm-metric-card {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.sm-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.sm-metric-card__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sm-metric-card__val {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+}
+
+.sm-metric-card__lbl {
+  font-size: 11px;
+  color: var(--color-secondary-gray);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ─── FILTER & VIEW SWITCHER BAR ─── */
+.sm-filter-bar {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.sm-view-toggle {
+  display: flex;
+  background: var(--color-off-white);
+  border: 1px solid var(--color-medium-gray);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.sm-view-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: var(--color-secondary-gray);
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.sm-view-btn--active {
+  background: white;
+  color: var(--color-primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ─── DATA TABLE WORKSPACE ─── */
+.sm-table-container {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ─── CONSOLIDATION WORKBENCH STYLING ─── */
+.sm-consolidation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.sm-candidate-card {
+  padding: 12px 16px;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  background: #F8F9FA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.sm-candidate-card:hover {
+  background: white;
+  border-color: var(--color-primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.sm-candidate-card--selected {
+  background: #EBF5FF;
+  border-color: var(--color-primary-blue);
+}
+
+.sm-utilization-meter {
+  height: 8px;
+  background: var(--color-medium-gray);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.sm-utilization-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+@media (max-width: 1100px) {
+  .sm-metrics-strip { grid-template-columns: repeat(3, 1fr); }
+  .sm-consolidation-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .sm-metrics-strip { grid-template-columns: 1fr; }
+}

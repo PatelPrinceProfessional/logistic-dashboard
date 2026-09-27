@@ -20,6 +20,11 @@ const OrdersList = lazy(() => import('../pages/Orders/OrdersList'));
 const OrderValidation = lazy(() => import('../pages/Orders/OrderValidation'));
 const OrderDetail = lazy(() => import('../pages/Orders/OrderDetail'));
 
+// ── Shipments Module ──
+const ShipmentsList = lazy(() => import('../pages/Shipments/ShipmentsList'));
+const ShipmentConsolidation = lazy(() => import('../pages/Shipments/ShipmentConsolidation'));
+const ShipmentDetail = lazy(() => import('../pages/Shipments/ShipmentDetail'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -55,9 +60,9 @@ export default function AppRouter() {
         <Route path="/orders/:id"             element={<OrderDetail />} />
 
         {/* ── Shipments ── */}
-        <Route path="/shipments"              element={<ComingSoon title="Shipments" />} />
-        <Route path="/shipments/consolidation"element={<ComingSoon title="Consolidation" />} />
-        <Route path="/shipments/:id"          element={<ComingSoon title="Shipment Detail" />} />
+        <Route path="/shipments"              element={<ShipmentsList />} />
+        <Route path="/shipments/consolidation"element={<ShipmentConsolidation />} />
+        <Route path="/shipments/:id"          element={<ShipmentDetail />} />
 
         {/* ── Planning ── */}
         <Route path="/planning"               element={<ComingSoon title="Planning Workbench" />} />
