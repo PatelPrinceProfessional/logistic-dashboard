@@ -51,10 +51,9 @@ const LiveMap = lazy(() => import('../pages/Tracking/LiveMap'));
 const ShipmentTracking = lazy(() => import('../pages/Tracking/ShipmentTracking'));
 const ETAManagement = lazy(() => import('../pages/Tracking/ETAManagement'));
 
-
-
-
-
+// ── Exceptions / Control Tower Module ──
+const ExceptionsDashboard = lazy(() => import('../pages/Exceptions/ExceptionsDashboard'));
+const RiskQueue = lazy(() => import('../pages/Exceptions/RiskQueue'));
 
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
@@ -122,8 +121,8 @@ export default function AppRouter() {
         <Route path="/tracking/eta"           element={<ETAManagement />} />
 
         {/* ── Exceptions / Control Tower ── */}
-        <Route path="/exceptions"             element={<ComingSoon title="Exception Dashboard" />} />
-        <Route path="/exceptions/risks"       element={<ComingSoon title="Risk Queue" />} />
+        <Route path="/exceptions"             element={<ExceptionsDashboard />} />
+        <Route path="/exceptions/risks"       element={<RiskQueue />} />
 
         {/* ── Drivers ── */}
         <Route path="/drivers"                element={<ComingSoon title="Drivers" />} />

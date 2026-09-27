@@ -1,0 +1,269 @@
+/* ==========================================================================
+   EXCEPTIONS & RISK MANAGEMENT CSS — PRISTINE ENTERPRISE STYLING
+   Split queue view, proactive predictive risk scores, and mitigation actions.
+   ========================================================================== */
+
+:root {
+  --exc-bg: #f8fafc;
+  --exc-card: #ffffff;
+  --exc-border: #e2e8f0;
+  --exc-text-main: #0f172a;
+  --exc-text-muted: #64748b;
+  --exc-primary: #0066cc;
+  --exc-primary-light: #eff6ff;
+  --exc-danger: #ef4444;
+  --exc-danger-light: #fef2f2;
+  --exc-warning: #f59e0b;
+  --exc-warning-light: #fffbeb;
+  --exc-success: #10b981;
+  --exc-success-light: #ecfdf5;
+}
+
+.exc-container {
+  padding: 20px 24px;
+  max-width: 1780px;
+  margin: 0 auto;
+  min-height: calc(100vh - 72px);
+  background-color: var(--exc-bg);
+  color: var(--exc-text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Header */
+.exc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--exc-border);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.exc-nav-tabs {
+  display: flex;
+  background: #f1f5f9;
+  border: 1px solid var(--exc-border);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.exc-nav-tab {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--exc-text-muted);
+  transition: all 0.15s;
+}
+
+.exc-nav-tab.active {
+  background: #ffffff;
+  color: var(--exc-primary);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* 4-KPI Metric Strip */
+.exc-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.exc-metric-card {
+  background: #ffffff;
+  border: 1px solid var(--exc-border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.exc-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+.exc-metric-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--exc-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.exc-metric-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 6px 0 2px 0;
+}
+
+.exc-metric-subtext {
+  font-size: 0.725rem;
+  color: var(--exc-text-muted);
+}
+
+/* Master-Detail Split Layout */
+.exc-split-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .exc-split-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Left Queue Column */
+.exc-queue-panel {
+  background: #ffffff;
+  border: 1px solid var(--exc-border);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 220px);
+  overflow: hidden;
+}
+
+.exc-queue-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--exc-border);
+  background: #f8fafc;
+}
+
+.exc-queue-list {
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exc-queue-item {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--exc-border);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exc-queue-item:hover {
+  background: #f8faff;
+  border-color: #bfdbfe;
+}
+
+.exc-queue-item.selected {
+  background: #eff6ff;
+  border-color: var(--exc-primary);
+  box-shadow: 0 0 0 1px var(--exc-primary);
+}
+
+.exc-queue-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Right Detail Panel */
+.exc-detail-panel {
+  background: #ffffff;
+  border: 1px solid var(--exc-border);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.exc-banner-alert {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  background: #fff5f5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exc-banner-alert.high {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.exc-banner-alert.medium {
+  background: #f8faff;
+  border-color: #bfdbfe;
+}
+
+/* Risk Score Progress */
+.risk-score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.risk-score-critical {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.risk-score-high {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+
+.risk-score-medium {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+/* Mitigation Strategy Option Tiles */
+.mitigation-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.mitigation-tile {
+  border: 1px solid var(--exc-border);
+  border-radius: 8px;
+  padding: 14px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.15s ease;
+}
+
+.mitigation-tile:hover {
+  border-color: var(--exc-primary);
+  background: #f8faff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
