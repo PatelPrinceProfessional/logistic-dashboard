@@ -46,6 +46,12 @@ const DispatchBoard = lazy(() => import('../pages/Dispatch/DispatchBoard'));
 const TripManagement = lazy(() => import('../pages/Dispatch/TripManagement'));
 const TripDetail = lazy(() => import('../pages/Dispatch/TripDetail'));
 
+// ── Live Tracking Module ──
+const LiveMap = lazy(() => import('../pages/Tracking/LiveMap'));
+const ShipmentTracking = lazy(() => import('../pages/Tracking/ShipmentTracking'));
+const ETAManagement = lazy(() => import('../pages/Tracking/ETAManagement'));
+
+
 
 
 
@@ -111,9 +117,9 @@ export default function AppRouter() {
         <Route path="/dispatch/trips/:id"     element={<TripDetail />} />
 
         {/* ── Live Tracking ── */}
-        <Route path="/tracking"               element={<ComingSoon title="Live Map" />} />
-        <Route path="/tracking/shipments"     element={<ComingSoon title="Shipment Tracking" />} />
-        <Route path="/tracking/eta"           element={<ComingSoon title="ETA Management" />} />
+        <Route path="/tracking"               element={<LiveMap />} />
+        <Route path="/tracking/shipments"     element={<ShipmentTracking />} />
+        <Route path="/tracking/eta"           element={<ETAManagement />} />
 
         {/* ── Exceptions / Control Tower ── */}
         <Route path="/exceptions"             element={<ComingSoon title="Exception Dashboard" />} />
