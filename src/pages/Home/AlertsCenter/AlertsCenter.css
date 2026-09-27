@@ -1,0 +1,194 @@
+/* ============================================================
+   LOGISTICSHUB — ALERTS CENTER CSS
+   ============================================================ */
+
+.alerts-center-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── METRICS STRIP ─── */
+.ac-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-md);
+}
+
+.ac-metric-box {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.ac-metric-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.ac-metric-box__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ac-metric-box__val {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+}
+
+.ac-metric-box__lbl {
+  font-size: 11px;
+  color: var(--color-secondary-gray);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ─── FILTER BAR ─── */
+.ac-filter-bar {
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.ac-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ac-pill-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid var(--color-medium-gray);
+  background: white;
+  color: var(--color-dark-gray-text);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.ac-pill-btn:hover { background: #F8F9FA; }
+.ac-pill-btn--active { background: var(--color-primary-blue); color: white; border-color: var(--color-primary-blue); }
+
+/* ─── DATA TABLE WORKSPACE ─── */
+.ac-workspace {
+  display: flex;
+  gap: var(--space-md);
+  position: relative;
+}
+
+.ac-table-container {
+  flex: 1;
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Table Row Severity Indicator Left Border */
+.ac-row--critical { border-left: 4px solid var(--color-error) !important; background: #FFF9F9; }
+.ac-row--high     { border-left: 4px solid var(--color-warning) !important; background: #FFFDF8; }
+.ac-row--medium   { border-left: 4px solid var(--color-pending) !important; background: #FFFFFA; }
+.ac-row--low      { border-left: 4px solid var(--color-info) !important; }
+
+/* ─── SLIDE-OUT DETAIL DRAWER ─── */
+.ac-drawer {
+  width: 420px;
+  background: white;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+  animation: slideInRight 0.25s ease-out;
+  overflow: hidden;
+  height: max-content;
+  max-height: calc(100vh - 180px);
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.ac-drawer__header {
+  padding: 16px 20px;
+  background: #F8F9FA;
+  border-bottom: 1px solid var(--color-medium-gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ac-drawer__body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.ac-drawer__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ac-drawer__title {
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-secondary-gray);
+}
+
+.ac-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 2px solid var(--color-medium-gray);
+  padding-left: 14px;
+  margin-left: 6px;
+}
+
+.ac-timeline__item {
+  position: relative;
+  font-size: 12px;
+}
+
+.ac-timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -19px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-blue);
+}
+
+@media (max-width: 1200px) {
+  .ac-metrics-strip { grid-template-columns: repeat(3, 1fr); }
+  .ac-workspace { flex-direction: column; }
+  .ac-drawer { width: 100%; }
+}
