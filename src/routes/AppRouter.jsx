@@ -68,6 +68,11 @@ const Appointments = lazy(() => import('../pages/Facilities/Appointments'));
 const DockSchedule = lazy(() => import('../pages/Facilities/DockSchedule'));
 const YardManagement = lazy(() => import('../pages/Facilities/YardManagement'));
 
+// ── Documents Module ──
+const DocumentsList = lazy(() => import('../pages/Documents/DocumentsList'));
+const EWayBillManagement = lazy(() => import('../pages/Documents/EWayBillManagement'));
+const EInvoiceManagement = lazy(() => import('../pages/Documents/EInvoiceManagement'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -153,9 +158,9 @@ export default function AppRouter() {
         <Route path="/facilities/yard"        element={<YardManagement />} />
 
         {/* ── Documents ── */}
-        <Route path="/documents"              element={<ComingSoon title="Documents" />} />
-        <Route path="/documents/eway-bill"    element={<ComingSoon title="E-Way Bill" />} />
-        <Route path="/documents/einvoice"     element={<ComingSoon title="E-Invoice" />} />
+        <Route path="/documents"              element={<DocumentsList />} />
+        <Route path="/documents/eway-bill"    element={<EWayBillManagement />} />
+        <Route path="/documents/einvoice"     element={<EInvoiceManagement />} />
 
         {/* ── Finance ── */}
         <Route path="/finance"                element={<ComingSoon title="Freight Audit" />} />
