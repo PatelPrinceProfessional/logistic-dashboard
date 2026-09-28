@@ -59,6 +59,10 @@ const RiskQueue = lazy(() => import('../pages/Exceptions/RiskQueue'));
 const DriversList = lazy(() => import('../pages/Drivers/DriversList'));
 const DriverApp = lazy(() => import('../pages/Drivers/DriverApp'));
 
+// ── Fleet Module ──
+const VehiclesList = lazy(() => import('../pages/Fleet/VehiclesList'));
+const FleetAnalytics = lazy(() => import('../pages/Fleet/FleetAnalytics'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -134,9 +138,9 @@ export default function AppRouter() {
         <Route path="/drivers/:id"            element={<DriversList />} />
 
         {/* ── Fleet ── */}
-        <Route path="/fleet"                  element={<ComingSoon title="Fleet — Vehicles" />} />
-        <Route path="/fleet/analytics"        element={<ComingSoon title="Fleet Analytics" />} />
-        <Route path="/fleet/:id"              element={<ComingSoon title="Vehicle Detail" />} />
+        <Route path="/fleet"                  element={<VehiclesList />} />
+        <Route path="/fleet/analytics"        element={<FleetAnalytics />} />
+        <Route path="/fleet/:id"              element={<VehiclesList />} />
 
         {/* ── Facilities ── */}
         <Route path="/facilities"             element={<ComingSoon title="Appointments" />} />
