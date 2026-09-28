@@ -84,6 +84,13 @@ const CustomersList = lazy(() => import('../pages/Customers/CustomersList'));
 const CustomerPortal = lazy(() => import('../pages/Customers/CustomerPortal'));
 const CustomerDetail = lazy(() => import('../pages/Customers/CustomerDetail'));
 
+// ── Carriers Module ──
+const CarriersList = lazy(() => import('../pages/Carriers/CarriersList'));
+const RateCards = lazy(() => import('../pages/Carriers/RateCards'));
+const Contracts = lazy(() => import('../pages/Carriers/Contracts'));
+const CarrierPortal = lazy(() => import('../pages/Carriers/CarrierPortal'));
+const CarrierDetail = lazy(() => import('../pages/Carriers/CarrierDetail'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -185,11 +192,11 @@ export default function AppRouter() {
         <Route path="/customers/:id"          element={<CustomerDetail />} />
 
         {/* ── Carriers ── */}
-        <Route path="/carriers"               element={<ComingSoon title="Carriers" />} />
-        <Route path="/carriers/rates"         element={<ComingSoon title="Rate Cards" />} />
-        <Route path="/carriers/contracts"     element={<ComingSoon title="Contracts" />} />
-        <Route path="/carriers/portal"        element={<ComingSoon title="Carrier Portal" />} />
-        <Route path="/carriers/:id"           element={<ComingSoon title="Carrier Detail" />} />
+        <Route path="/carriers"               element={<CarriersList />} />
+        <Route path="/carriers/rates"         element={<RateCards />} />
+        <Route path="/carriers/contracts"     element={<Contracts />} />
+        <Route path="/carriers/portal"        element={<CarrierPortal />} />
+        <Route path="/carriers/:id"           element={<CarrierDetail />} />
 
         {/* ── Analytics ── */}
         <Route path="/analytics"              element={<ComingSoon title="Analytics Dashboard" />} />
