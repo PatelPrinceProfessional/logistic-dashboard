@@ -73,6 +73,12 @@ const DocumentsList = lazy(() => import('../pages/Documents/DocumentsList'));
 const EWayBillManagement = lazy(() => import('../pages/Documents/EWayBillManagement'));
 const EInvoiceManagement = lazy(() => import('../pages/Documents/EInvoiceManagement'));
 
+// ── Finance Module ──
+const FreightAudit = lazy(() => import('../pages/Finance/FreightAudit'));
+const CarrierInvoices = lazy(() => import('../pages/Finance/CarrierInvoices'));
+const Settlement = lazy(() => import('../pages/Finance/Settlement'));
+const CustomerBilling = lazy(() => import('../pages/Finance/CustomerBilling'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -163,10 +169,10 @@ export default function AppRouter() {
         <Route path="/documents/einvoice"     element={<EInvoiceManagement />} />
 
         {/* ── Finance ── */}
-        <Route path="/finance"                element={<ComingSoon title="Freight Audit" />} />
-        <Route path="/finance/invoices"       element={<ComingSoon title="Carrier Invoices" />} />
-        <Route path="/finance/settlement"     element={<ComingSoon title="Settlement" />} />
-        <Route path="/finance/billing"        element={<ComingSoon title="Customer Billing" />} />
+        <Route path="/finance"                element={<FreightAudit />} />
+        <Route path="/finance/invoices"       element={<CarrierInvoices />} />
+        <Route path="/finance/settlement"     element={<Settlement />} />
+        <Route path="/finance/billing"        element={<CustomerBilling />} />
 
         {/* ── Customers ── */}
         <Route path="/customers"              element={<ComingSoon title="Customers" />} />

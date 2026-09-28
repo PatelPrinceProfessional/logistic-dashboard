@@ -1,0 +1,440 @@
+/**
+ * Comprehensive Mock Data for Logistics Finance Suite
+ * Supports Freight Audit (3-Way Matching), Carrier Invoices, Settlement, and Customer Billing.
+ */
+
+// ── 1. Freight Audit Mock Data (3-Way Matching) ──
+export const freightAuditSummaryStats = {
+  totalAuditedValue: '₹ 18.42 Cr',
+  autoMatchRatePct: 94.2,
+  disputedOverchargesSaved: '₹ 24.80 L',
+  flaggedPendingReviewCount: 18,
+  avgAuditCycleHours: 4.2,
+  toleranceThresholdPct: 1.5,
+};
+
+export const freightAuditList = [
+  {
+    id: 'AUD-8801',
+    carrierName: 'North Express Freight Ltd',
+    carrierGstin: '03AABCN9901J1ZX',
+    invoiceNumber: 'INV-NEF-2026-9901',
+    invoiceDate: '2026-09-27',
+    tripId: 'TRIP-9901',
+    shipmentId: 'SHP-88092',
+    originCity: 'Mumbai (Bhiwandi)',
+    destCity: 'Delhi (Okhla)',
+    // 3-Way Matching Breakdown
+    contractRate: {
+      baseFreight: 52000,
+      fuelSurcharge: 6240, // 12%
+      tollCharges: 4800, // Standard FastTag estimate
+      detentionFreeHours: 4,
+      detentionHourlyRate: 500,
+      unloadingFee: 0,
+      totalAgreed: 63040,
+    },
+    actualTelemetry: {
+      gpsDistanceKm: 1420,
+      plannedDistanceKm: 1410,
+      weighbridgeGrossKg: 18400,
+      tollFastTagActual: 4850,
+      loadingDwellHours: 3.5,
+      unloadingDwellHours: 4.2, // 0.2h extra detention
+      temperatureBreaches: 0,
+    },
+    billedInvoice: {
+      baseFreight: 52000,
+      fuelSurcharge: 6240,
+      tollCharges: 5400, // +₹550 higher than FastTag actual
+      detentionCharges: 2500, // Billed 5 hours detention (claimed delay)
+      unloadingFee: 1200, // Unapproved driver unloading charge
+      grossBilled: 67340,
+    },
+    varianceAmount: 4300, // Overcharge
+    variancePct: 6.82,
+    matchStatus: 'Discrepancy Flagged', // 'Auto-Matched' | 'Discrepancy Flagged' | 'Resolved / Counter-Offered' | 'Approved'
+    discrepancyReasons: [
+      'Unapproved Driver Unloading Fee (₹ 1,200) - Shipper contract mandates recipient unloading',
+      'Detention Overbilled by 4.8 hrs (₹ 2,500) - GPS geofence logs show truck arrived at 14:10, not 09:30',
+      'Toll charge variance +₹ 550 vs actual NETC FastTag API deduction',
+    ],
+    auditorRecommendation: 'Approve ₹ 63,040. Issue Debit Note deduction of ₹ 4,300 with GPS geofence proof.',
+    settlementApprovedAmount: null,
+  },
+  {
+    id: 'AUD-8802',
+    carrierName: 'LogisticsHub Dedicated Linehaul',
+    carrierGstin: '27AABCL9901M1Z1',
+    invoiceNumber: 'INV-LHD-2026-4401',
+    invoiceDate: '2026-09-28',
+    tripId: 'TRIP-9904',
+    shipmentId: 'SHP-88095',
+    originCity: 'Chennai Port',
+    destCity: 'Bangalore (Hosur)',
+    contractRate: {
+      baseFreight: 38000,
+      fuelSurcharge: 4560,
+      tollCharges: 2200,
+      detentionFreeHours: 4,
+      detentionHourlyRate: 450,
+      unloadingFee: 0,
+      totalAgreed: 44760,
+    },
+    actualTelemetry: {
+      gpsDistanceKm: 348,
+      plannedDistanceKm: 345,
+      weighbridgeGrossKg: 14200,
+      tollFastTagActual: 2200,
+      loadingDwellHours: 2.1,
+      unloadingDwellHours: 3.0,
+      temperatureBreaches: 0,
+    },
+    billedInvoice: {
+      baseFreight: 38000,
+      fuelSurcharge: 4560,
+      tollCharges: 2200,
+      detentionCharges: 0,
+      unloadingFee: 0,
+      grossBilled: 44760,
+    },
+    varianceAmount: 0,
+    variancePct: 0.0,
+    matchStatus: 'Auto-Matched',
+    discrepancyReasons: [],
+    auditorRecommendation: 'Zero variance. 100% telemetry pass. Released directly to Level-1 Approval.',
+    settlementApprovedAmount: 44760,
+  },
+  {
+    id: 'AUD-8803',
+    carrierName: 'Western Cold-Chain Express',
+    carrierGstin: '24AABCR3301K1ZQ',
+    invoiceNumber: 'INV-WCE-2026-1102',
+    invoiceDate: '2026-09-27',
+    tripId: 'TRIP-9908',
+    shipmentId: 'SHP-88098',
+    originCity: 'Ahmedabad',
+    destCity: 'Mumbai (Vashi)',
+    contractRate: {
+      baseFreight: 46000,
+      fuelSurcharge: 6900, // 15% Reefer Fuel
+      tollCharges: 3100,
+      detentionFreeHours: 3,
+      detentionHourlyRate: 750,
+      unloadingFee: 0,
+      totalAgreed: 56000,
+    },
+    actualTelemetry: {
+      gpsDistanceKm: 520,
+      plannedDistanceKm: 515,
+      weighbridgeGrossKg: 12800,
+      tollFastTagActual: 3100,
+      loadingDwellHours: 2.8,
+      unloadingDwellHours: 2.5,
+      temperatureBreaches: 0,
+    },
+    billedInvoice: {
+      baseFreight: 46000,
+      fuelSurcharge: 6900,
+      tollCharges: 3100,
+      detentionCharges: 0,
+      unloadingFee: 0,
+      grossBilled: 56000,
+    },
+    varianceAmount: 0,
+    variancePct: 0.0,
+    matchStatus: 'Auto-Matched',
+    discrepancyReasons: [],
+    auditorRecommendation: 'Temperature logs 100% compliant (+3.8°C avg). Auto-approved.',
+    settlementApprovedAmount: 56000,
+  },
+  {
+    id: 'AUD-8804',
+    carrierName: 'Capital Haul Logistics',
+    carrierGstin: '07AABCC8801K1Z3',
+    invoiceNumber: 'INV-CHL-2026-7781',
+    invoiceDate: '2026-09-26',
+    tripId: 'TRIP-9892',
+    shipmentId: 'SHP-88085',
+    originCity: 'Gurugram',
+    destCity: 'Jaipur Hub',
+    contractRate: {
+      baseFreight: 22000,
+      fuelSurcharge: 2640,
+      tollCharges: 1650,
+      detentionFreeHours: 4,
+      detentionHourlyRate: 400,
+      unloadingFee: 0,
+      totalAgreed: 26290,
+    },
+    actualTelemetry: {
+      gpsDistanceKm: 242,
+      plannedDistanceKm: 240,
+      weighbridgeGrossKg: 9200,
+      tollFastTagActual: 1650,
+      loadingDwellHours: 3.0,
+      unloadingDwellHours: 8.5, // 4.5h extra detention verified by warehouse dock
+      temperatureBreaches: 0,
+    },
+    billedInvoice: {
+      baseFreight: 22000,
+      fuelSurcharge: 2640,
+      tollCharges: 1650,
+      detentionCharges: 1800, // 4.5h x ₹400 = ₹1,800
+      unloadingFee: 0,
+      grossBilled: 28090,
+    },
+    varianceAmount: 1800, // Valid detention approved
+    variancePct: 6.84,
+    matchStatus: 'Approved with Justification',
+    discrepancyReasons: ['Detention of 4.5h verified by Jaipur Hub security gate timestamps.'],
+    auditorRecommendation: 'Valid detention surcharge confirmed by receiver. Approve full amount ₹ 28,090.',
+    settlementApprovedAmount: 28090,
+  },
+];
+
+// ── 2. Carrier Invoices Mock Data ──
+export const carrierInvoicesSummaryStats = {
+  totalOutstandingPayables: '₹ 6.84 Cr',
+  dueIn7Days: '₹ 1.92 Cr',
+  approvedQueuedDisbursement: '₹ 2.45 Cr',
+  invoicesInDisputeCount: 12,
+  tdsDeductedThisMonth: '₹ 14.82 L',
+};
+
+export const carrierInvoicesList = [
+  {
+    id: 'CINV-401',
+    invoiceNumber: 'INV-NEF-2026-9901',
+    carrierName: 'North Express Freight Ltd',
+    carrierGstin: '03AABCN9901J1ZX',
+    invoiceDate: '2026-09-27',
+    dueDate: '2026-10-12',
+    daysUntilDue: 14,
+    associatedTrip: 'TRIP-9901 (Mumbai → Delhi)',
+    grossAmount: 67340,
+    auditApprovedAmount: 63040,
+    tdsRatePct: 2.0, // Section 194C (Company)
+    tdsAmount: 1260.8,
+    gstRcmApplicable: true,
+    gstRcmAmount: 3152, // 5% GTA RCM
+    netPayable: 61779.2,
+    approvalStatus: 'In Dispute Review', // 'Pending Level 1' | 'Approved' | 'In Dispute Review' | 'Disbursed'
+    approvalLevel: 'Level 2 - Finance Controller',
+    creditTerms: 'Net 15 Days',
+    paymentMode: 'Bank Transfer (NEFT)',
+    bankAccountMasked: 'HDFC Bank •••• 9921',
+  },
+  {
+    id: 'CINV-402',
+    invoiceNumber: 'INV-LHD-2026-4401',
+    carrierName: 'LogisticsHub Dedicated Linehaul',
+    carrierGstin: '27AABCL9901M1Z1',
+    invoiceDate: '2026-09-28',
+    dueDate: '2026-10-13',
+    daysUntilDue: 15,
+    associatedTrip: 'TRIP-9904 (Chennai → Bangalore)',
+    grossAmount: 44760,
+    auditApprovedAmount: 44760,
+    tdsRatePct: 1.0, // Section 194C (Individual/HUF/Transporter declaration)
+    tdsAmount: 447.6,
+    gstRcmApplicable: true,
+    gstRcmAmount: 2238,
+    netPayable: 44312.4,
+    approvalStatus: 'Approved & Queued',
+    approvalLevel: 'Approved for Batch Run',
+    creditTerms: 'Net 15 Days',
+    paymentMode: 'Direct Bank Wire (RTGS)',
+    bankAccountMasked: 'ICICI Bank •••• 4410',
+  },
+  {
+    id: 'CINV-403',
+    invoiceNumber: 'INV-WCE-2026-1102',
+    carrierName: 'Western Cold-Chain Express',
+    carrierGstin: '24AABCR3301K1ZQ',
+    invoiceDate: '2026-09-27',
+    dueDate: '2026-10-04',
+    daysUntilDue: 6,
+    associatedTrip: 'TRIP-9908 (Ahmedabad → Mumbai)',
+    grossAmount: 56000,
+    auditApprovedAmount: 56000,
+    tdsRatePct: 2.0,
+    tdsAmount: 1120,
+    gstRcmApplicable: true,
+    gstRcmAmount: 2800,
+    netPayable: 54880,
+    approvalStatus: 'Approved & Queued',
+    approvalLevel: 'Approved for Batch Run',
+    creditTerms: 'Net 7 Days',
+    paymentMode: 'Direct Bank Wire (RTGS)',
+    bankAccountMasked: 'Axis Bank •••• 1109',
+  },
+  {
+    id: 'CINV-404',
+    invoiceNumber: 'INV-CHL-2026-7781',
+    carrierName: 'Capital Haul Logistics',
+    carrierGstin: '07AABCC8801K1Z3',
+    invoiceDate: '2026-09-26',
+    dueDate: '2026-10-11',
+    daysUntilDue: 13,
+    associatedTrip: 'TRIP-9892 (Gurugram → Jaipur)',
+    grossAmount: 28090,
+    auditApprovedAmount: 28090,
+    tdsRatePct: 1.0,
+    tdsAmount: 280.9,
+    gstRcmApplicable: true,
+    gstRcmAmount: 1404.5,
+    netPayable: 27809.1,
+    approvalStatus: 'Pending Level 1',
+    approvalLevel: 'Level 1 - Logistics Dispatch Lead',
+    creditTerms: 'Net 15 Days',
+    paymentMode: 'Bank Transfer (NEFT)',
+    bankAccountMasked: 'SBI •••• 8841',
+  },
+];
+
+// ── 3. Settlement & Disbursements Mock Data ──
+export const settlementSummaryStats = {
+  disbursedThisMonth: '₹ 14.28 Cr',
+  scheduledBatchToday: '₹ 82.50 L',
+  escrowHoldReserves: '₹ 18.20 L',
+  bankApiStatus: 'Connected (HDFC & ICICI Host-to-Host Active)',
+  totalCarriersPaid: 420,
+  successfulDisbursementPct: 99.8,
+};
+
+export const settlementBatchList = [
+  {
+    id: 'BATCH-2026-0928-A',
+    executionDate: '2026-09-28 16:00 IST',
+    bankGateway: 'HDFC Corporate Host-to-Host (API-RTGS)',
+    totalInvoicesCount: 14,
+    totalGrossAmount: 842500,
+    totalTdsDeducted: 16850,
+    totalNetDisbursed: 825650,
+    status: 'Executed / Cleared',
+    utrNumber: 'HDFCR5202609280091244',
+    beneficiaries: [
+      { name: 'LogisticsHub Dedicated Linehaul', amount: 44312.4, utr: 'HDFC0091244-1', status: 'Success' },
+      { name: 'Western Cold-Chain Express', amount: 54880.0, utr: 'HDFC0091244-2', status: 'Success' },
+      { name: 'Southern Drayage Lines', amount: 128450.0, utr: 'HDFC0091244-3', status: 'Success' },
+    ],
+  },
+  {
+    id: 'BATCH-2026-0927-B',
+    executionDate: '2026-09-27 18:30 IST',
+    bankGateway: 'ICICI E-Collection Virtual Settlement',
+    totalInvoicesCount: 22,
+    totalGrossAmount: 1420000,
+    totalTdsDeducted: 28400,
+    totalNetDisbursed: 1391600,
+    status: 'Executed / Cleared',
+    utrNumber: 'ICICR5202609278891021',
+    beneficiaries: [
+      { name: 'Delhi Freightways Corp', amount: 210400.0, utr: 'ICIC8891021-1', status: 'Success' },
+      { name: 'Rajasthan Roadlines', amount: 98400.0, utr: 'ICIC8891021-2', status: 'Success' },
+    ],
+  },
+  {
+    id: 'BATCH-2026-0929-SCHEDULED',
+    executionDate: '2026-09-29 11:00 IST (Queued)',
+    bankGateway: 'HDFC Corporate Host-to-Host (API-RTGS)',
+    totalInvoicesCount: 9,
+    totalGrossAmount: 620000,
+    totalTdsDeducted: 12400,
+    totalNetDisbursed: 607600,
+    status: 'Queued for Execution',
+    utrNumber: 'PENDING_BANK_EXECUTION',
+    beneficiaries: [
+      { name: 'Capital Haul Logistics', amount: 27809.1, utr: 'QUEUED', status: 'Pending Authorization' },
+      { name: 'North Express Freight (Resolved)', amount: 61779.2, utr: 'QUEUED', status: 'Pending Authorization' },
+    ],
+  },
+];
+
+// ── 4. Customer Billing Mock Data ──
+export const customerBillingSummaryStats = {
+  totalBilledThisMonth: '₹ 28.50 Cr',
+  collectionsRealized: '₹ 21.80 Cr',
+  outstandingReceivables: '₹ 6.70 Cr',
+  overduePct: 6.4,
+  agingSummary: {
+    bracket0To30Days: '₹ 22.80 Cr (80%)',
+    bracket31To60Days: '₹ 4.10 Cr (14.4%)',
+    bracket60PlusDays: '₹ 1.60 Cr (5.6%)',
+  },
+};
+
+export const customerInvoicesList = [
+  {
+    id: 'CUST-INV-8801',
+    invoiceNumber: 'BILL-2026-TATA-09',
+    customerName: 'Tata Motors Limited',
+    customerGstin: '07AAACR4091M1ZP',
+    billingCycle: 'Monthly Consolidated (Sept 2026)',
+    invoiceDate: '2026-09-28',
+    dueDate: '2026-10-28',
+    daysAging: 0,
+    agingStatus: 'Current (0-30 Days)',
+    totalShipmentsCount: 48,
+    financials: {
+      baseFreight: 2480000,
+      fuelSurchargeIndex: 322400, // Linked to Indian Diesel Index @ ₹90.4/L
+      detentionLoadingFee: 45000,
+      gstAmount: 512532, // 18% GST
+      totalBilledAmount: 3359932,
+      tdsExpectedDeduction: 67198.64, // 2% 194C
+      netReceivable: 3292733.36,
+    },
+    paymentStatus: 'Unpaid / Sent to Customer',
+    collectionHistory: [],
+  },
+  {
+    id: 'CUST-INV-8802',
+    invoiceNumber: 'BILL-2026-RELIANCE-09',
+    customerName: 'Reliance Retail Ventures',
+    customerGstin: '33AAACF4401L1Z2',
+    billingCycle: 'Fortnightly Cycle #2',
+    invoiceDate: '2026-09-20',
+    dueDate: '2026-10-05',
+    daysAging: 8,
+    agingStatus: 'Current (0-30 Days)',
+    totalShipmentsCount: 32,
+    financials: {
+      baseFreight: 1850000,
+      fuelSurchargeIndex: 222000,
+      detentionLoadingFee: 12000,
+      gstAmount: 375120,
+      totalBilledAmount: 2459120,
+      tdsExpectedDeduction: 49182.4,
+      netReceivable: 2409937.6,
+    },
+    paymentStatus: 'Partially Paid (50% Wire Received)',
+    collectionHistory: [
+      { date: '2026-09-25', amount: 1200000, mode: 'RTGS (HDFC Bank)', utr: 'HDFCR2026092599014' },
+    ],
+  },
+  {
+    id: 'CUST-INV-8803',
+    invoiceNumber: 'BILL-2026-HAVELLS-08',
+    customerName: 'Havells India Limited',
+    customerGstin: '27AAACH1209M1ZR',
+    billingCycle: 'Monthly Consolidated (August 2026)',
+    invoiceDate: '2026-08-31',
+    dueDate: '2026-09-15',
+    daysAging: 43,
+    agingStatus: 'Overdue (31-60 Days)',
+    totalShipmentsCount: 26,
+    financials: {
+      baseFreight: 1420000,
+      fuelSurchargeIndex: 170400,
+      detentionLoadingFee: 8000,
+      gstAmount: 287712,
+      totalBilledAmount: 1886112,
+      tdsExpectedDeduction: 37722.24,
+      netReceivable: 1848389.76,
+    },
+    paymentStatus: 'Overdue - Reminder Sent',
+    collectionHistory: [],
+  },
+];
