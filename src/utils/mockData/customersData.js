@@ -1,0 +1,300 @@
+/**
+ * Comprehensive Mock Data for Customer Management, Account 360°, and Shipper Portal
+ * Supports enterprise accounts directory, credit management, live portal tracking, and instant spot quotes.
+ */
+
+// ── 1. Customer Directory Summary Statistics ──
+export const customersSummaryStats = {
+  totalActiveAccounts: 142,
+  platinumTierCount: 34,
+  onTimeSlaPct: 98.6,
+  monthlyShipperGmv: '₹ 38.40 Cr',
+  aggregateCreditLimit: '₹ 25.00 Cr',
+  creditUtilizationPct: 68.4,
+};
+
+// ── 2. Enterprise Customer Accounts Dataset ──
+export const customersList = [
+  {
+    id: 'CUST-001',
+    code: 'TAT-MUM-01',
+    name: 'Tata Motors Limited',
+    legalName: 'Tata Motors Assembly & Passenger Vehicle Division',
+    gstin: '07AAACR4091M1ZP',
+    pan: 'AAACR4091M',
+    tier: 'Platinum',
+    industry: 'Automotive & Heavy Eng',
+    city: 'Mumbai & Pantnagar',
+    billingAddress: 'Bombay House, 24 Homi Mody Street, Fort, Mumbai 400001',
+    accountManager: 'Vikramaditya Rao (Lead KAM)',
+    accountManagerPhone: '+91 98200 44120',
+    monthlySpend: 4850000,
+    monthlyVolumeMt: 4200,
+    creditLimit: 5000000,
+    outstandingBalance: 3359932,
+    creditUtilizationPct: 67.2,
+    creditTerms: 'Net 30 Days',
+    onTimeSlaPct: 99.1,
+    activeShipmentsCount: 14,
+    primaryLanes: ['Pune → Pantnagar', 'Jamshedpur → Mumbai', 'Sanand → Delhi NCR'],
+    contractStartDate: '2025-04-01',
+    contractEndDate: '2027-03-31',
+    status: 'Active (Healthy)',
+    contacts: [
+      { name: 'Sanjay Deshmukh', role: 'Head of Outbound Logistics', email: 'sanjay.d@tatamotors.com', phone: '+91 98210 99801' },
+      { name: 'Meera Kulkarni', role: 'Finance Accounts Payable', email: 'meera.k@tatamotors.com', phone: '+91 98210 99802' },
+    ],
+    rateCards: [
+      { lane: 'Pune → Pantnagar (1,480 km)', vehicle: '32ft Multi-Axle MX', baseRate: 52000, fscFormula: '12% Base Diesel', freeDetentionHours: 4 },
+      { lane: 'Jamshedpur → Mumbai (1,690 km)', vehicle: '40ft High-Cube Trailer', baseRate: 64000, fscFormula: '13% Base Diesel', freeDetentionHours: 4 },
+    ],
+  },
+  {
+    id: 'CUST-002',
+    code: 'REL-BLR-02',
+    name: 'Reliance Retail Ventures Ltd',
+    legalName: 'Reliance Retail Supply Chain & Consumer Logistics',
+    gstin: '33AAACF4401L1Z2',
+    pan: 'AAACF4401L',
+    tier: 'Platinum',
+    industry: 'FMCG & Consumer Electronics',
+    city: 'Bangalore & Chennai',
+    billingAddress: 'Prestige Trade Tower, Palace Road, Bangalore 560001',
+    accountManager: 'Ananya Sen (Senior KAM)',
+    accountManagerPhone: '+91 98450 11902',
+    monthlySpend: 3920000,
+    monthlyVolumeMt: 3600,
+    creditLimit: 4500000,
+    outstandingBalance: 2459120,
+    creditUtilizationPct: 54.6,
+    creditTerms: 'Net 15 Days',
+    onTimeSlaPct: 98.4,
+    activeShipmentsCount: 18,
+    primaryLanes: ['Bangalore → Chennai', 'Mumbai → Hyderabad', 'Delhi → Jaipur'],
+    contractStartDate: '2025-06-01',
+    contractEndDate: '2027-05-31',
+    status: 'Active (Healthy)',
+    contacts: [
+      { name: 'Karthik Raman', role: 'VP Regional Distribution', email: 'karthik.r@ril.com', phone: '+91 98440 22341' },
+      { name: 'Pooja Hegde', role: 'Supply Chain Coordinator', email: 'pooja.h@ril.com', phone: '+91 98440 22342' },
+    ],
+    rateCards: [
+      { lane: 'Bangalore → Chennai (345 km)', vehicle: '24ft Container Truck', baseRate: 28000, fscFormula: '10% Base Diesel', freeDetentionHours: 3 },
+      { lane: 'Mumbai → Hyderabad (710 km)', vehicle: '32ft Single-Axle SXL', baseRate: 38500, fscFormula: '12% Base Diesel', freeDetentionHours: 4 },
+    ],
+  },
+  {
+    id: 'CUST-003',
+    code: 'HAV-DEL-03',
+    name: 'Havells India Limited',
+    legalName: 'Havells India Lighting & Switchgear Division',
+    gstin: '27AAACH1209M1ZR',
+    pan: 'AAACH1209M',
+    tier: 'Gold',
+    industry: 'Electrical & Home Appliances',
+    city: 'Noida & Bhiwandi',
+    billingAddress: 'QRG Towers, 2D Expressway Sector 126, Noida 201304',
+    accountManager: 'Deepak Mehrotra',
+    accountManagerPhone: '+91 98110 33411',
+    monthlySpend: 2450000,
+    monthlyVolumeMt: 1850,
+    creditLimit: 3000000,
+    outstandingBalance: 1886112,
+    creditUtilizationPct: 62.8,
+    creditTerms: 'Net 30 Days',
+    onTimeSlaPct: 97.9,
+    activeShipmentsCount: 9,
+    primaryLanes: ['Neemrana → Bhiwandi', 'Haridwar → Ahmedabad', 'Noida → Kolkata'],
+    contractStartDate: '2025-01-01',
+    contractEndDate: '2026-12-31',
+    status: 'Payment Overdue (Review)',
+    contacts: [
+      { name: 'Alok Saxena', role: 'Commercial Logistics Lead', email: 'alok.s@havells.com', phone: '+91 98100 88712' },
+    ],
+    rateCards: [
+      { lane: 'Neemrana → Bhiwandi (1,240 km)', vehicle: '32ft Multi-Axle MX', baseRate: 46000, fscFormula: '12% Base Diesel', freeDetentionHours: 4 },
+    ],
+  },
+  {
+    id: 'CUST-004',
+    code: 'SUN-PHAR-04',
+    name: 'Sun Pharma Industries Ltd',
+    legalName: 'Sun Pharmaceutical Specialities Cold-Chain',
+    gstin: '33AABCS9910N1ZW',
+    pan: 'AABCS9910N',
+    tier: 'Platinum',
+    industry: 'Pharmaceuticals & Healthcare',
+    city: 'Mumbai & Kanchipuram',
+    billingAddress: 'Sun House, CTS No. 201 B/1, Western Express Highway, Goregaon East, Mumbai 400063',
+    accountManager: 'Dr. Ritu Varma (Cold-Chain Specialist)',
+    accountManagerPhone: '+91 98200 99440',
+    monthlySpend: 5400000,
+    monthlyVolumeMt: 980,
+    creditLimit: 6000000,
+    outstandingBalance: 2840000,
+    creditUtilizationPct: 47.3,
+    creditTerms: 'Net 30 Days',
+    onTimeSlaPct: 99.8,
+    activeShipmentsCount: 12,
+    primaryLanes: ['Kanchipuram → Delhi NCR', 'Ahmedabad → Mumbai', 'Baddi → Bangalore'],
+    contractStartDate: '2025-08-01',
+    contractEndDate: '2027-07-31',
+    status: 'Active (Healthy)',
+    contacts: [
+      { name: 'Dr. Praveen Nair', role: 'GDP Quality Compliance Head', email: 'praveen.n@sunpharma.com', phone: '+91 98210 44901' },
+      { name: 'Sneha Jain', role: 'Cold-Chain Dispatch Manager', email: 'sneha.j@sunpharma.com', phone: '+91 98210 44902' },
+    ],
+    rateCards: [
+      { lane: 'Kanchipuram → Delhi NCR (2,180 km)', vehicle: '32ft Reefer (+4°C Active)', baseRate: 84000, fscFormula: '15% Reefer Fuel Surcharge', freeDetentionHours: 3 },
+      { lane: 'Ahmedabad → Mumbai (520 km)', vehicle: '24ft Reefer (+2°C to +8°C)', baseRate: 36000, fscFormula: '14% Reefer Fuel Surcharge', freeDetentionHours: 3 },
+    ],
+  },
+  {
+    id: 'CUST-005',
+    code: 'FOX-CHE-05',
+    name: 'Foxconn International SEZ',
+    legalName: 'Foxconn Electronics Component Assembly India',
+    gstin: '27AAACS9901M1ZQ',
+    pan: 'AAACS9901M',
+    tier: 'Platinum',
+    industry: 'High-Tech & Semi-Conductor',
+    city: 'Chennai & JNPT SEZ',
+    billingAddress: 'SEZ Hi-Tech Corridor, Sriperumbudur, Tamil Nadu 602106',
+    accountManager: 'Vikramaditya Rao (Lead KAM)',
+    accountManagerPhone: '+91 98200 44120',
+    monthlySpend: 6200000,
+    monthlyVolumeMt: 1400,
+    creditLimit: 7500000,
+    outstandingBalance: 4120000,
+    creditUtilizationPct: 54.9,
+    creditTerms: 'Net 30 Days',
+    onTimeSlaPct: 99.4,
+    activeShipmentsCount: 8,
+    primaryLanes: ['Chennai Port → Sriperumbudur', 'JNPT Port → Pune SEZ'],
+    contractStartDate: '2025-03-01',
+    contractEndDate: '2027-02-28',
+    status: 'Active (Healthy)',
+    contacts: [
+      { name: 'David Lin', role: 'Director of Global Freight Logistics', email: 'david.lin@foxconn.com', phone: '+91 98400 11201' },
+    ],
+    rateCards: [
+      { lane: 'Chennai Port → Sriperumbudur (45 km)', vehicle: '40ft Port Drayage Flatbed', baseRate: 14500, fscFormula: 'Flat Spot Index', freeDetentionHours: 6 },
+    ],
+  },
+  {
+    id: 'CUST-006',
+    code: 'AMU-GUJ-06',
+    name: 'Amul Dairy Industrial Cooperative',
+    legalName: 'Gujarat Cooperative Milk Marketing Federation Ltd (GCMMF)',
+    gstin: '24AABCA0011M1ZY',
+    pan: 'AABCA0011M',
+    tier: 'Gold',
+    industry: 'Dairy & Cold FMCG',
+    city: 'Anand (Gujarat)',
+    billingAddress: 'Amul Dairy Road, Anand, Gujarat 388001',
+    accountManager: 'Harish Bhatt',
+    accountManagerPhone: '+91 98240 66120',
+    monthlySpend: 2850000,
+    monthlyVolumeMt: 5200,
+    creditLimit: 3500000,
+    outstandingBalance: 1950000,
+    creditUtilizationPct: 55.7,
+    creditTerms: 'Net 15 Days',
+    onTimeSlaPct: 98.9,
+    activeShipmentsCount: 16,
+    primaryLanes: ['Anand → Navi Mumbai', 'Anand → Delhi NCR', 'Surat → Pune'],
+    contractStartDate: '2025-05-01',
+    contractEndDate: '2026-04-30',
+    status: 'Active (Healthy)',
+    contacts: [
+      { name: 'Nilesh Patel', role: 'Cold Logistics Manager', email: 'nilesh.p@amul.coop', phone: '+91 98250 88901' },
+    ],
+    rateCards: [
+      { lane: 'Anand → Navi Mumbai (480 km)', vehicle: '32ft Insulated Dairy Reefer', baseRate: 32000, fscFormula: '12% Base Diesel', freeDetentionHours: 4 },
+    ],
+  },
+];
+
+// ── 3. Customer Portal Session Mock Data (Shipper View) ──
+export const customerPortalSessions = {
+  'CUST-001': {
+    customerId: 'CUST-001',
+    customerName: 'Tata Motors Limited',
+    tier: 'Platinum Tier Client',
+    activeShipments: [
+      {
+        id: 'SHP-88092',
+        orderId: 'ORD-5401',
+        origin: 'Pune Assembly Hub',
+        destination: 'Pantnagar Plant',
+        cargo: 'Auto Chassis Assemblies (18.4 MT)',
+        vehicle: 'MH-04-AB-1234 (32ft MX)',
+        driver: 'Rajesh Sharma',
+        driverPhone: '+91 98201 22334',
+        status: 'In-Transit on NH-48',
+        currentLocation: 'Passing Jaipur Toll (ETA 16:30 IST)',
+        progressPct: 72,
+        eta: 'Tomorrow, 14:00 IST',
+        temperature: 'Ambient (24°C)',
+        ewbNumber: '2410 8892 0192',
+      },
+      {
+        id: 'SHP-88094',
+        orderId: 'ORD-5403',
+        origin: 'Jamshedpur Stamping Plant',
+        destination: 'Mumbai Sanand Depot',
+        cargo: 'Sheet Metal Panels (22 MT)',
+        vehicle: 'JH-05-CB-8812 (40ft Trailer)',
+        driver: 'Balwinder Singh',
+        driverPhone: '+91 98110 55443',
+        status: 'Departed Origin Hub',
+        currentLocation: 'Ranchi Bypass (ETA 22:00 IST)',
+        progressPct: 24,
+        eta: 'Oct 01, 10:00 IST',
+        temperature: 'Ambient (26°C)',
+        ewbNumber: '2410 4491 8802',
+      },
+    ],
+    recentBookings: [
+      { id: 'BKG-9901', date: '2026-09-28', route: 'Pune → Pantnagar', vehicleType: '32ft Multi-Axle', status: 'Dispatched (SHP-88092)', quoteAmount: 63040 },
+      { id: 'BKG-9889', date: '2026-09-25', route: 'Jamshedpur → Mumbai', vehicleType: '40ft Trailer', status: 'Delivered (e-POD Signed)', quoteAmount: 74500 },
+      { id: 'BKG-9870', date: '2026-09-22', route: 'Sanand → Delhi NCR', vehicleType: '32ft Multi-Axle', status: 'Delivered (e-POD Signed)', quoteAmount: 48000 },
+    ],
+    supportTickets: [
+      { id: 'TCK-401', issue: 'FastTag Toll Receipt Request for Sept Linehaul', priority: 'Medium', status: 'Resolved', created: '2 days ago', responseTime: '18 mins' },
+      { id: 'TCK-408', issue: 'Advance Gate Slot Booking for Bhiwandi Hub #2', priority: 'High', status: 'In Progress', created: '3 hours ago', responseTime: 'Awaiting Dock Assignment' },
+    ],
+    sustainability: {
+      totalCo2EmissionsMt: 142.4,
+      co2SavedVsStandardRoadMt: 28.6,
+      railMultimodalPct: 34.2,
+      greenScore: 'A+ (Exceeds ESG 2026 Mandate)',
+    },
+  },
+};
+
+// ── 4. Instant Spot Rate Calculator Mock Engine ──
+export const calculateSpotQuote = (originPin, destPin, cargoWeightMt, vehicleType) => {
+  const baseKm = Math.floor(400 + Math.random() * 1000);
+  let ratePerKm = 38;
+  if (vehicleType.includes('32ft')) ratePerKm = 44;
+  if (vehicleType.includes('40ft')) ratePerKm = 56;
+  if (vehicleType.includes('Reefer')) ratePerKm = 68;
+
+  const baseFreight = baseKm * ratePerKm;
+  const fsc = Math.round(baseFreight * 0.12);
+  const tolls = Math.round(baseKm * 3.2);
+  const gst = Math.round((baseFreight + fsc + tolls) * 0.18);
+  const totalQuote = baseFreight + fsc + tolls + gst;
+
+  return {
+    estimatedDistanceKm: baseKm,
+    estimatedTransitHours: Math.round(baseKm / 42),
+    baseFreight,
+    fuelSurcharge: fsc,
+    tollEstimate: tolls,
+    gstAmount: gst,
+    totalQuoteAmount: totalQuote,
+    guaranteedSlaDays: Math.ceil(baseKm / 500),
+  };
+};

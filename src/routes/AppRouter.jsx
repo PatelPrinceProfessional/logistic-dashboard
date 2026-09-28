@@ -79,6 +79,11 @@ const CarrierInvoices = lazy(() => import('../pages/Finance/CarrierInvoices'));
 const Settlement = lazy(() => import('../pages/Finance/Settlement'));
 const CustomerBilling = lazy(() => import('../pages/Finance/CustomerBilling'));
 
+// ── Customers Module ──
+const CustomersList = lazy(() => import('../pages/Customers/CustomersList'));
+const CustomerPortal = lazy(() => import('../pages/Customers/CustomerPortal'));
+const CustomerDetail = lazy(() => import('../pages/Customers/CustomerDetail'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -175,9 +180,9 @@ export default function AppRouter() {
         <Route path="/finance/billing"        element={<CustomerBilling />} />
 
         {/* ── Customers ── */}
-        <Route path="/customers"              element={<ComingSoon title="Customers" />} />
-        <Route path="/customers/portal"       element={<ComingSoon title="Customer Portal" />} />
-        <Route path="/customers/:id"          element={<ComingSoon title="Customer Detail" />} />
+        <Route path="/customers"              element={<CustomersList />} />
+        <Route path="/customers/portal"       element={<CustomerPortal />} />
+        <Route path="/customers/:id"          element={<CustomerDetail />} />
 
         {/* ── Carriers ── */}
         <Route path="/carriers"               element={<ComingSoon title="Carriers" />} />
