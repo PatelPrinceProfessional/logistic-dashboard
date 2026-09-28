@@ -91,6 +91,11 @@ const Contracts = lazy(() => import('../pages/Carriers/Contracts'));
 const CarrierPortal = lazy(() => import('../pages/Carriers/CarrierPortal'));
 const CarrierDetail = lazy(() => import('../pages/Carriers/CarrierDetail'));
 
+// ── Analytics & BI Module ──
+const AnalyticsDashboard = lazy(() => import('../pages/Analytics/AnalyticsDashboard'));
+const BIReports = lazy(() => import('../pages/Analytics/BIReports'));
+const Sustainability = lazy(() => import('../pages/Analytics/Sustainability'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -199,9 +204,9 @@ export default function AppRouter() {
         <Route path="/carriers/:id"           element={<CarrierDetail />} />
 
         {/* ── Analytics ── */}
-        <Route path="/analytics"              element={<ComingSoon title="Analytics Dashboard" />} />
-        <Route path="/analytics/reports"      element={<ComingSoon title="BI Reports" />} />
-        <Route path="/analytics/sustainability" element={<ComingSoon title="Sustainability" />} />
+        <Route path="/analytics"              element={<AnalyticsDashboard />} />
+        <Route path="/analytics/reports"      element={<BIReports />} />
+        <Route path="/analytics/sustainability" element={<Sustainability />} />
 
         {/* ── Admin ── */}
         <Route path="/admin/users"            element={<ComingSoon title="Users" />} />
