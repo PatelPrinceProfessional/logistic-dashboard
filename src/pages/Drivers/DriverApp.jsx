@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import Layout from '../../components/Common/Layout/Layout';
 import { driverAppInitialSession } from '../../utils/mockData/driversData';
 import './Drivers.css';
 
@@ -212,7 +213,11 @@ export default function DriverApp() {
   };
 
   return (
-    <div className="driver-app-page-wrapper">
+    <Layout
+      title="Driver Companion App"
+      breadcrumbs={[{ label: 'Resources', path: '/drivers' }, { label: 'Driver App' }]}
+    >
+      <div className="driver-app-page-wrapper">
       {/* Top Device Viewport Controls */}
       <div className="driver-app-top-controls">
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -985,5 +990,6 @@ export default function DriverApp() {
         </div>
       )}
     </div>
+    </Layout>
   );
 }

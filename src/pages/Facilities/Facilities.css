@@ -1,0 +1,394 @@
+/* ==========================================================================
+   FACILITIES, DOCK SCHEDULE & YARD OPERATIONS DESIGN SYSTEM
+   ========================================================================== */
+
+/* ── Main Container ── */
+.facilities-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.facilities-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.facilities-facility-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.facility-dropdown {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ── Stat KPI Banner ── */
+.facilities-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--space-3);
+}
+
+.facility-stat-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.facility-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.facility-stat-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.facility-stat-icon-box.blue   { background: var(--color-primary-50); color: var(--color-primary-600); }
+.facility-stat-icon-box.green  { background: #ecfdf5; color: #059669; }
+.facility-stat-icon-box.amber  { background: #fffbeb; color: #d97706; }
+.facility-stat-icon-box.purple { background: #f5f3ff; color: #7c3aed; }
+.facility-stat-icon-box.teal   { background: #f0fdfa; color: #0d9488; }
+
+.facility-stat-val {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+}
+
+.facility-stat-lbl {
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ── 2-Column Appointments Layout (Calendar + Dock Meter Sidebar) ── */
+.appointments-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-4);
+}
+
+@media (max-width: 1080px) {
+  .appointments-main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 7-Day Weekly Calendar Matrix ── */
+.calendar-matrix-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow-x: auto;
+}
+
+.calendar-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-grid-7days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+.calendar-day-col {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 380px;
+}
+
+.calendar-day-title {
+  font-size: var(--font-xs);
+  font-weight: 800;
+  text-align: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.calendar-day-title.today {
+  color: var(--color-primary-600);
+  background: var(--color-primary-50);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.calendar-apt-pill {
+  border-radius: var(--radius-md);
+  padding: 6px 8px;
+  color: #ffffff;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calendar-apt-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.calendar-apt-pill.pickup    { background: #2563eb; }
+.calendar-apt-pill.delivery  { background: #059669; }
+.calendar-apt-pill.crossdock { background: #d97706; }
+
+/* ── Dock / Gate Capacity Sidebar ── */
+.dock-capacity-sidebar {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.dock-meter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.dock-meter-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--color-bg-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dock-meter-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ==========================================================================
+   DOCK SCHEDULE GANTT TIMELINE (/facilities/dock)
+   ========================================================================== */
+.gantt-chart-container {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  overflow-x: auto;
+}
+
+.gantt-timeline-header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 8px;
+}
+
+.gantt-time-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  padding: 0 8px;
+}
+
+.gantt-dock-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 0;
+  position: relative;
+}
+
+.gantt-dock-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gantt-lane-track {
+  position: relative;
+  height: 42px;
+  background: var(--color-bg-secondary);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+}
+
+.gantt-apt-block {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: transform 0.15s ease;
+}
+
+.gantt-apt-block:hover {
+  transform: scaleY(1.08);
+  z-index: 5;
+}
+
+.gantt-current-time-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ef4444;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.gantt-current-time-marker::before {
+  content: 'LIVE NOW';
+  position: absolute;
+  top: -18px;
+  left: -24px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   YARD MANAGEMENT 2D VISUAL FLOOR PLAN (/facilities/yard)
+   ========================================================================== */
+.yard-2d-canvas-card {
+  background: #0f172a;
+  border-radius: var(--radius-xl);
+  border: 1px solid #1e293b;
+  padding: 20px;
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  user-select: none;
+}
+
+.yard-grid-surface {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border: 2px dashed #334155;
+  border-radius: 14px;
+  background: radial-gradient(circle, #1e293b 10%, #0f172a 90%);
+}
+
+.yard-zone-boundary {
+  position: absolute;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.yard-zone-boundary:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #38bdf8;
+}
+
+.yard-zone-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.yard-trailer-pin {
+  position: absolute;
+  width: 38px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 10;
+}
+
+.yard-trailer-pin:hover {
+  transform: scale(1.25);
+  z-index: 20;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+.yard-trailer-pin.loading { background: #2563eb; }
+.yard-trailer-pin.ready   { background: #10b981; }
+.yard-trailer-pin.waiting { background: #f59e0b; }
+.yard-trailer-pin.parked  { background: #64748b; }

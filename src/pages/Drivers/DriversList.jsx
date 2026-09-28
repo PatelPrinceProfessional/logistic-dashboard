@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import Layout from '../../components/Common/Layout/Layout';
 import { driversStats, driversList as initialDrivers } from '../../utils/mockData/driversData';
 import DriverDetailModal from './components/DriverDetailModal';
 import DriverCreateModal from './components/DriverCreateModal';
@@ -102,7 +103,11 @@ export default function DriversList() {
   };
 
   return (
-    <div className="drivers-page-container">
+    <Layout
+      title="Drivers & Personnel"
+      breadcrumbs={[{ label: 'Resources', path: '/drivers' }, { label: 'All Drivers' }]}
+    >
+      <div className="drivers-page-container">
       {/* Toast Notification */}
       {toastMessage && (
         <div
@@ -433,5 +438,6 @@ export default function DriversList() {
         />
       )}
     </div>
+    </Layout>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import Layout from '../../components/Common/Layout/Layout';
 import { fleetSummaryStats, fleetVehiclesList as initialVehicles } from '../../utils/mockData/fleetData';
 import VehicleDetailModal from './components/VehicleDetailModal';
 import VehicleCreateModal from './components/VehicleCreateModal';
@@ -110,7 +111,11 @@ export default function VehiclesList() {
   };
 
   return (
-    <div className="fleet-page-container">
+    <Layout
+      title="Fleet Management & Assets"
+      breadcrumbs={[{ label: 'Fleet', path: '/fleet' }, { label: 'Vehicles' }]}
+    >
+      <div className="fleet-page-container">
       {/* Toast Notification */}
       {toastMessage && (
         <div
@@ -475,5 +480,6 @@ export default function VehiclesList() {
         />
       )}
     </div>
+    </Layout>
   );
 }

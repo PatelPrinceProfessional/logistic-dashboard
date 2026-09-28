@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Layout from '../../components/Common/Layout/Layout';
 import { fleetSummaryStats, fleetAnalyticsData } from '../../utils/mockData/fleetData';
 import './Fleet.css';
 
@@ -21,7 +22,11 @@ export default function FleetAnalytics() {
   };
 
   return (
-    <div className="fleet-page-container">
+    <Layout
+      title="Fleet Telematics & Analytics"
+      breadcrumbs={[{ label: 'Fleet', path: '/fleet' }, { label: 'Analytics' }]}
+    >
+      <div className="fleet-page-container">
       {/* Toast Notification */}
       {toastMessage && (
         <div
@@ -375,5 +380,6 @@ export default function FleetAnalytics() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }

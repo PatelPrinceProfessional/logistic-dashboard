@@ -63,6 +63,11 @@ const DriverApp = lazy(() => import('../pages/Drivers/DriverApp'));
 const VehiclesList = lazy(() => import('../pages/Fleet/VehiclesList'));
 const FleetAnalytics = lazy(() => import('../pages/Fleet/FleetAnalytics'));
 
+// ── Facilities Module ──
+const Appointments = lazy(() => import('../pages/Facilities/Appointments'));
+const DockSchedule = lazy(() => import('../pages/Facilities/DockSchedule'));
+const YardManagement = lazy(() => import('../pages/Facilities/YardManagement'));
+
 // ── Coming Soon placeholder ──
 const ComingSoon = ({ title }) => (
   <div className="empty-state">
@@ -143,9 +148,9 @@ export default function AppRouter() {
         <Route path="/fleet/:id"              element={<VehiclesList />} />
 
         {/* ── Facilities ── */}
-        <Route path="/facilities"             element={<ComingSoon title="Appointments" />} />
-        <Route path="/facilities/dock"        element={<ComingSoon title="Dock Schedule" />} />
-        <Route path="/facilities/yard"        element={<ComingSoon title="Yard Management" />} />
+        <Route path="/facilities"             element={<Appointments />} />
+        <Route path="/facilities/dock"        element={<DockSchedule />} />
+        <Route path="/facilities/yard"        element={<YardManagement />} />
 
         {/* ── Documents ── */}
         <Route path="/documents"              element={<ComingSoon title="Documents" />} />
