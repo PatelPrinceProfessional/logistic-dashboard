@@ -274,13 +274,15 @@ export default function ExecutiveDashboard() {
       </div>
 
       {/* ── Recent Shipments Table ── */}
-      <div className="card mb-lg">
-        <div className="card__header">
-          <div className="card__title">Recent Shipments</div>
-          <button className="btn btn--ghost btn--sm" id="view-all-shipments-btn">View All</button>
+      <div className="recent-shipments-card">
+        <div className="recent-shipments-header">
+          <h3 className="recent-shipments-title">Recent Shipments</h3>
+          <button className="recent-shipments-view-all" id="view-all-shipments-btn">
+            View All
+          </button>
         </div>
-        <div className="table-container" style={{ border: 'none', borderRadius: 0 }}>
-          <table className="table" aria-label="Recent shipments">
+        <div className="recent-shipments-table-wrap">
+          <table className="recent-shipments-table" aria-label="Recent shipments">
             <thead>
               <tr>
                 <th>Shipment ID</th>
@@ -292,20 +294,42 @@ export default function ExecutiveDashboard() {
               </tr>
             </thead>
             <tbody>
-              {recentShipments.map((s) => (
-                <tr key={s.id} className={getRowClass(s.status)}>
-                  <td><a href={`/shipments/${s.id}`} className="table-link">{s.id}</a></td>
-                  <td>{s.customer}</td>
-                  <td style={{ fontSize: 13, color: '#6C757D' }}>{s.origin} → {s.dest}</td>
-                  <td>{s.carrier}</td>
-                  <td style={{ fontSize: 13 }}>{s.eta}</td>
-                  <td>
-                    <span className={`badge ${getBadgeClass(s.status)}`}>
-                      {getStatusLabel(s.status)}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+              {recentShipments.map((s, index) => {
+                const [etaDate, etaTime] = (s.eta || '').split(' ');
+                return (
+                  <tr key={s.id} className="recent-shipments-row" style={{ '--row-index': index }}>
+                    <td>
+                      <div className="shipment-id-cell">
+                        <span className={`shipment-status-strip shipment-status-strip--${s.status}`} />
+                        <a href={`/shipments/${s.id}`} className="shipment-id-link">{s.id}</a>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="shipment-customer-text">{s.customer}</span>
+                    </td>
+                    <td>
+                      <span className="shipment-route-text">
+                        {s.origin} <span className="shipment-route-arrow">→</span> {s.dest}
+                      </span>
+                    </td>
+                    <td>
+                      <span className="shipment-carrier-text">{s.carrier}</span>
+                    </td>
+                    <td>
+                      <div className="shipment-eta-group">
+                        <span className="shipment-eta-date">{etaDate}</span>
+                        {etaTime && <span className="shipment-eta-time">{etaTime}</span>}
+                      </div>
+                    </td>
+                    <td>
+                      <span className={`shipment-status-pill shipment-status-pill--${s.status}`}>
+                        <span className="shipment-status-dot" />
+                        {getStatusLabel(s.status)}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

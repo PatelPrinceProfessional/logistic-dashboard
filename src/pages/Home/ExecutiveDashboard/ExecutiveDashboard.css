@@ -1,7 +1,11 @@
 /**
- * Executive Dashboard - Top Carriers by On-Time % Card Redesign
- * Modern SaaS analytics widget: calm, airy, highly readable, clear hierarchy, 60fps micro-interactions.
+ * Executive Dashboard - Top Carriers & Recent Shipments Redesign
+ * Modern SaaS analytics widgets: calm, airy, highly readable, clear hierarchy, 60fps micro-interactions.
  */
+
+/* ============================================================
+   SECTION A: TOP CARRIERS BY ON-TIME % CARD
+   ============================================================ */
 
 /* ─── 1. Card Container ─── */
 .top-carriers-card {
@@ -263,7 +267,6 @@
 }
 
 /* ─── 7. Status Color Variations (Refined Tones) ─── */
-/* High Performance (Green / On-Time >= 94%) */
 .carrier-perf--excellent .carrier-score-chip {
   background-color: rgba(5, 150, 105, 0.1);
   color: #059669;
@@ -272,7 +275,6 @@
   background: linear-gradient(90deg, #34d399 0%, #059669 100%);
 }
 
-/* Good Performance (Blue / On-Time 90% - 93.9%) */
 .carrier-perf--good .carrier-score-chip {
   background-color: rgba(37, 99, 235, 0.1);
   color: #2563eb;
@@ -281,7 +283,6 @@
   background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
 }
 
-/* Attention Required (Warm Amber / On-Time < 90%) */
 .carrier-perf--warning .carrier-score-chip {
   background-color: rgba(217, 119, 6, 0.12);
   color: #d97706;
@@ -290,13 +291,321 @@
   background: linear-gradient(90deg, #fbbf24 0%, #d97706 100%);
 }
 
-/* ─── 8. Responsive Adaptations ─── */
+
+/* ============================================================
+   SECTION B: RECENT SHIPMENTS TABLE CARD REDESIGN
+   ============================================================ */
+
+/* ─── 1. Card Container ─── */
+.recent-shipments-card {
+  background: var(--color-white, #ffffff);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 6px 24px -4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: var(--space-lg, 24px);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.recent-shipments-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 28px -6px rgba(0, 0, 0, 0.08);
+  border-color: rgba(203, 213, 225, 0.9);
+}
+
+/* ─── 2. Header ─── */
+.recent-shipments-header {
+  height: 72px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.recent-shipments-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  margin: 0;
+  font-family: var(--font-primary, inherit);
+  -webkit-font-smoothing: antialiased;
+}
+
+.recent-shipments-view-all {
+  font-size: 13px;
+  font-weight: 500;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 180ms ease;
+  user-select: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.recent-shipments-view-all:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: rgba(203, 213, 225, 0.9);
+}
+
+/* ─── 3. Table Container ─── */
+.recent-shipments-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recent-shipments-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: auto;
+  box-sizing: border-box;
+}
+
+/* ─── 4. Table Header Row ─── */
+.recent-shipments-table thead tr {
+  background: #f8fafc;
+  height: 44px;
+  border: none;
+}
+
+.recent-shipments-table th {
+  padding: 0 24px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  vertical-align: middle;
+  border: none;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  white-space: nowrap;
+  font-family: var(--font-primary, inherit);
+  box-sizing: border-box;
+}
+
+/* ─── 5. Table Body Rows ─── */
+.recent-shipments-row {
+  height: 64px;
+  background: transparent;
+  transition: background-color 180ms ease;
+  animation: shipmentRowFadeSlideUp 0.35s ease-out both;
+  animation-delay: calc(var(--row-index, 0) * 40ms);
+}
+
+.recent-shipments-row:hover {
+  background-color: rgba(241, 245, 249, 0.65);
+}
+
+.recent-shipments-table td {
+  padding: 0 24px;
+  vertical-align: middle;
+  border: none;
+  border-bottom: 1px solid rgba(241, 245, 249, 0.9);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.recent-shipments-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@keyframes shipmentRowFadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── 6. Cell Typography & Elements ─── */
+.shipment-id-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.shipment-status-strip {
+  width: 3px;
+  height: 24px;
+  border-radius: 999px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.shipment-status-strip--on-time {
+  background-color: #059669;
+}
+
+.shipment-status-strip--at-risk {
+  background-color: #ea580c;
+}
+
+.shipment-status-strip--delayed {
+  background-color: #dc2626;
+}
+
+.shipment-status-strip--pending {
+  background-color: #d97706;
+}
+
+.shipment-id-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  transition: color 180ms ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shipment-id-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.shipment-customer-text,
+.shipment-carrier-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+  white-space: nowrap;
+}
+
+.shipment-route-text {
+  font-size: 13px;
+  font-weight: 400;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.shipment-route-arrow {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.shipment-eta-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.shipment-eta-date {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.shipment-eta-time {
+  font-weight: 400;
+  color: #64748b;
+}
+
+/* ─── 7. Status Badges (Soft Tinted Pills) ─── */
+.shipment-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.shipment-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* On-Time (Emerald) */
+.shipment-status-pill--on-time {
+  background-color: rgba(5, 150, 105, 0.12);
+  color: #059669;
+}
+.shipment-status-pill--on-time .shipment-status-dot {
+  background-color: #059669;
+}
+
+/* At Risk (Warm Amber / Orange) */
+.shipment-status-pill--at-risk {
+  background-color: rgba(234, 88, 12, 0.12);
+  color: #c2410c;
+}
+.shipment-status-pill--at-risk .shipment-status-dot {
+  background-color: #ea580c;
+}
+
+/* Delayed (Red) */
+.shipment-status-pill--delayed {
+  background-color: rgba(220, 38, 38, 0.12);
+  color: #dc2626;
+}
+.shipment-status-pill--delayed .shipment-status-dot {
+  background-color: #dc2626;
+}
+
+/* Pending (Amber) */
+.shipment-status-pill--pending {
+  background-color: rgba(217, 119, 6, 0.12);
+  color: #d97706;
+}
+.shipment-status-pill--pending .shipment-status-dot {
+  background-color: #d97706;
+}
+
+
+/* ============================================================
+   RESPONSIVE, DARK MODE & ACCESSIBILITY RULES
+   ============================================================ */
+
+/* ─── Responsive Adaptations ─── */
 @media (max-width: 1024px) {
   .carrier-progress-wrapper {
     width: 100px;
   }
   .carrier-perf-zone {
     gap: 14px;
+  }
+  .recent-shipments-table th,
+  .recent-shipments-table td {
+    padding: 0 16px;
+  }
+  .recent-shipments-header {
+    padding: 0 20px;
   }
 }
 
@@ -336,12 +645,33 @@
     flex: 1;
     width: auto;
   }
+
+  /* Sticky First Column on Mobile */
+  .recent-shipments-header {
+    padding: 0 16px;
+    height: 64px;
+  }
+  .recent-shipments-table th:first-child,
+  .recent-shipments-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: #ffffff;
+    box-shadow: 2px 0 6px -2px rgba(0, 0, 0, 0.06);
+  }
+  .recent-shipments-table thead th:first-child {
+    z-index: 3;
+    background: #f8fafc;
+  }
 }
 
-/* ─── 9. Dark Mode Theme Support ─── */
+/* ─── Dark Mode Theme Support ─── */
 [data-theme='dark'] .top-carriers-card,
 body.dark .top-carriers-card,
-.dark .top-carriers-card {
+.dark .top-carriers-card,
+[data-theme='dark'] .recent-shipments-card,
+body.dark .recent-shipments-card,
+.dark .recent-shipments-card {
   background: #0f172a;
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
@@ -349,7 +679,10 @@ body.dark .top-carriers-card,
 
 [data-theme='dark'] .top-carriers-title,
 body.dark .top-carriers-title,
-.dark .top-carriers-title {
+.dark .top-carriers-title,
+[data-theme='dark'] .recent-shipments-title,
+body.dark .recent-shipments-title,
+.dark .recent-shipments-title {
   color: #f8fafc;
 }
 
@@ -366,28 +699,92 @@ body.dark .top-carriers-header-action:hover,
   color: #f1f5f9;
 }
 
+[data-theme='dark'] .recent-shipments-view-all,
+body.dark .recent-shipments-view-all,
+.dark .recent-shipments-view-all {
+  color: #94a3b8;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .recent-shipments-view-all:hover,
+body.dark .recent-shipments-view-all:hover,
+.dark .recent-shipments-view-all:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 [data-theme='dark'] .top-carriers-divider,
 body.dark .top-carriers-divider,
 .dark .top-carriers-divider {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
+[data-theme='dark'] .recent-shipments-table thead tr,
+body.dark .recent-shipments-table thead tr,
+.dark .recent-shipments-table thead tr {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme='dark'] .recent-shipments-table th,
+body.dark .recent-shipments-table th,
+.dark .recent-shipments-table th {
+  color: #94a3b8;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .recent-shipments-table td,
+body.dark .recent-shipments-table td,
+.dark .recent-shipments-table td {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
 [data-theme='dark'] .top-carrier-row:hover,
 body.dark .top-carrier-row:hover,
-.dark .top-carrier-row:hover {
+.dark .top-carrier-row:hover,
+[data-theme='dark'] .recent-shipments-row:hover,
+body.dark .recent-shipments-row:hover,
+.dark .recent-shipments-row:hover {
   background-color: rgba(255, 255, 255, 0.04);
 }
 
 [data-theme='dark'] .carrier-name,
 body.dark .carrier-name,
-.dark .carrier-name {
+.dark .carrier-name,
+[data-theme='dark'] .shipment-customer-text,
+body.dark .shipment-customer-text,
+.dark .shipment-customer-text,
+[data-theme='dark'] .shipment-carrier-text,
+body.dark .shipment-carrier-text,
+.dark .shipment-carrier-text,
+[data-theme='dark'] .shipment-eta-date,
+body.dark .shipment-eta-date,
+.dark .shipment-eta-date {
   color: #f1f5f9;
 }
 
 [data-theme='dark'] .carrier-shipments,
 body.dark .carrier-shipments,
-.dark .carrier-shipments {
+.dark .carrier-shipments,
+[data-theme='dark'] .shipment-route-text,
+body.dark .shipment-route-text,
+.dark .shipment-route-text,
+[data-theme='dark'] .shipment-eta-time,
+body.dark .shipment-eta-time,
+.dark .shipment-eta-time {
   color: #94a3b8;
+}
+
+[data-theme='dark'] .shipment-id-link,
+body.dark .shipment-id-link,
+.dark .shipment-id-link {
+  color: #60a5fa;
+}
+
+[data-theme='dark'] .shipment-id-link:hover,
+body.dark .shipment-id-link:hover,
+.dark .shipment-id-link:hover {
+  color: #93c5fd;
 }
 
 [data-theme='dark'] .carrier-progress-track,
@@ -396,45 +793,16 @@ body.dark .carrier-progress-track,
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-[data-theme='dark'] .carrier-rank-badge--1,
-body.dark .carrier-rank-badge--1,
-.dark .carrier-rank-badge--1 {
-  background: rgba(245, 158, 11, 0.18);
-  color: #fbbf24;
-  border-color: rgba(245, 158, 11, 0.35);
+[data-theme='dark'] .recent-shipments-table th:first-child,
+[data-theme='dark'] .recent-shipments-table td:first-child {
+  background: #0f172a !important;
 }
 
-[data-theme='dark'] .carrier-rank-badge--2,
-body.dark .carrier-rank-badge--2,
-.dark .carrier-rank-badge--2 {
-  background: rgba(148, 163, 184, 0.18);
-  color: #cbd5e1;
-  border-color: rgba(148, 163, 184, 0.3);
-}
-
-[data-theme='dark'] .carrier-rank-badge--3,
-body.dark .carrier-rank-badge--3,
-.dark .carrier-rank-badge--3 {
-  background: rgba(234, 88, 12, 0.18);
-  color: #fb923c;
-  border-color: rgba(234, 88, 12, 0.3);
-}
-
-[data-theme='dark'] .carrier-rank-badge--4,
-[data-theme='dark'] .carrier-rank-badge--5,
-body.dark .carrier-rank-badge--4,
-body.dark .carrier-rank-badge--5,
-.dark .carrier-rank-badge--4,
-.dark .carrier-rank-badge--5 {
-  background: rgba(255, 255, 255, 0.04);
-  color: #64748b;
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-/* ─── 10. Accessibility Reduced Motion ─── */
+/* ─── Accessibility Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   .top-carrier-row,
-  .carrier-progress-fill {
+  .carrier-progress-fill,
+  .recent-shipments-row {
     animation: none !important;
     transition: none !important;
   }
