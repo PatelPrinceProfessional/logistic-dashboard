@@ -9,6 +9,7 @@ import {
   exceptionSeverity, recentShipments, recentAlerts
 } from '../../../utils/mockData/dashboard';
 import { getBadgeClass, getStatusLabel, getRowClass, formatCurrency } from '../../../utils/statusHelpers';
+import './ExecutiveDashboard.css';
 
 /* ─── KPI Card ─── */
 function KPICard({ icon: Icon, iconBg, value, label, trend, trendType }) {
@@ -190,24 +191,61 @@ export default function ExecutiveDashboard() {
       {/* ── Bottom Row ── */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
         {/* Top Carriers */}
-        <div className="card">
-          <div className="card__header">
-            <div className="card__title">Top Carriers by On-Time %</div>
+        <div className="top-carriers-card">
+          <div className="top-carriers-header">
+            <div className="top-carriers-title-group">
+              <h3 className="top-carriers-title">Top Carriers by On-Time %</h3>
+            </div>
+            <span className="top-carriers-header-action">
+              This Month
+            </span>
           </div>
-          <div className="card__body--flush">
-            {topCarriers.map((c, i) => (
-              <div key={c.name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', borderBottom: i < topCarriers.length - 1 ? '1px solid #F1F3F5' : 'none' }}>
-                <span style={{ width: 20, fontSize: 12, color: '#6C757D', fontWeight: 600, textAlign: 'center' }}>{i + 1}</span>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 14, fontWeight: 500 }}>{c.name}</div>
-                  <div style={{ fontSize: 12, color: '#6C757D' }}>{c.count} shipments</div>
+          <div className="top-carriers-divider" />
+          <div className="top-carriers-list">
+            {topCarriers.map((c, i) => {
+              const perfClass =
+                c.onTime >= 94
+                  ? 'carrier-perf--excellent'
+                  : c.onTime >= 90
+                  ? 'carrier-perf--good'
+                  : 'carrier-perf--warning';
+
+              return (
+                <div
+                  key={c.name}
+                  className={`top-carrier-row ${perfClass}`}
+                  style={{ '--row-index': i }}
+                  tabIndex={0}
+                >
+                  {/* Zone 1: Rank Badge */}
+                  <div className={`carrier-rank-badge carrier-rank-badge--${i + 1}`}>
+                    {i + 1}
+                  </div>
+
+                  {/* Zone 2: Carrier Info */}
+                  <div className="carrier-info-zone">
+                    <span className="carrier-name">{c.name}</span>
+                    <span className="carrier-shipments">{c.count} shipments</span>
+                  </div>
+
+                  {/* Zone 3: Performance Block */}
+                  <div className="carrier-perf-zone">
+                    <div className="carrier-progress-wrapper">
+                      <div className="carrier-progress-track">
+                        <div
+                          className="carrier-progress-fill"
+                          style={{ width: `${c.onTime}%` }}
+                        />
+                      </div>
+                    </div>
+                    <div className="carrier-score-group">
+                      <span className="carrier-score-chip">{c.onTime}%</span>
+                      <span className="carrier-score-label">on-time</span>
+                    </div>
+                  </div>
                 </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: c.color }}>{c.onTime}%</div>
-                  <div style={{ fontSize: 11, color: '#6C757D' }}>on-time</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
